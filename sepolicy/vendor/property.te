@@ -43,3 +43,4 @@ not_compatible_property(`
 
 type vendor_qspm_prop, property_type;
 
+type power_prop, property_type;
