@@ -26,3 +26,6 @@ get_prop(vendor_init, nvt_prop)
 get_prop(vendor_init, esd_prop)
 get_prop(vendor_init, dolby_prop)
 get_prop(vendor_init, perfservice_prop)
+
+allow vendor_init proc_sysctl_autogroup:file w_file_perms;
+
