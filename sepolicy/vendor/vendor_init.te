@@ -28,4 +28,4 @@ get_prop(vendor_init, dolby_prop)
 get_prop(vendor_init, perfservice_prop)
 
 allow vendor_init proc_sysctl_autogroup:file w_file_perms;
-
+allow vendor_init proc_sysctl_schedboost:file w_file_perms;
