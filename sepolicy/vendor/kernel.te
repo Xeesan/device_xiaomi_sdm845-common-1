@@ -1,1 +1,2 @@
 allow kernel self:socket create;
+allow kernel debugfs_wlan:dir search;
