@@ -4179,7 +4179,13 @@ case "$target" in
         # CPU is isolated/hotplugged, the IRQ affinity is adjusted
         # to one of the CPU from the default IRQ affinity mask.
         echo f > /proc/irq/default_smp_affinity
+
         chmod 666 /sys/class/power_supply/battery/dc_thermal_levels
+
+        echo 2 > /proc/irq/7/smp_affinity_list # msm_drm
+        #echo 0 > /proc/irq/377/smp_affinity_list # synaptics,s3320
+        echo 1 > /proc/irq/489/smp_affinity_list # kgsl-3d0
+
         if [ -f /sys/devices/soc0/soc_id ]; then
                 soc_id=`cat /sys/devices/soc0/soc_id`
         else
