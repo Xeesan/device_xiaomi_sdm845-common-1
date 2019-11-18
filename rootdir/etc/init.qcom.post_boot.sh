@@ -4325,7 +4325,14 @@ case "$target" in
         echo 0-2,4-7 > /dev/cpuset/foreground/cpus
         echo 0-7 > /dev/cpuset/top-app/cpus
 
-	# Turn off scheduler boost at the end
+        # Setup final blkio
+        # value for group_idle is us
+        echo 1000 > /dev/blkio/blkio.weight
+        echo 10 > /dev/blkio/background/blkio.weight
+        echo 2000 > /dev/blkio/blkio.group_idle
+        echo 0 > /dev/blkio/background/blkio.group_idle
+
+        # Turn off scheduler boost at the end
         echo 0 > /proc/sys/kernel/sched_boost
 
         # Turn on scheduler boost for top app main
