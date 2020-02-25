@@ -141,5 +141,5 @@ ro.hardware.egl=adreno
 
 persist.vendor.dpmhalservice.enable=1
 
-#Dolby 
-persist.baikal.dolby.enable=false
+# Perf
+ro.vendor.extension_library=libqti-perfd-client.so
