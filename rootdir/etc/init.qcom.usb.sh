@@ -1,5 +1,4 @@
-#! /vendor/bin/sh
-
+#!/vendor/bin/sh
 # Copyright (c) 2012-2018, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -23,11 +22,17 @@
 # CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
 # SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
 # BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCEg
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 #
+
+# Set platform variables
+soc_hwplatform=`cat /sys/devices/soc0/hw_platform 2> /dev/null`
+soc_machine=`cat /sys/devices/soc0/machine 2> /dev/null`
+soc_machine=${soc_machine:0:2}
+soc_id=`cat /sys/devices/soc0/soc_id 2> /dev/null`
 
 #
 # Check ESOC for external modem
@@ -36,22 +41,64 @@
 #
 esoc_name=`cat /sys/bus/esoc/devices/esoc0/esoc_name 2> /dev/null`
 
+target=`getprop ro.board.platform`
+
 if [ -f /sys/class/android_usb/f_mass_storage/lun/nofua ]; then
-    echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
+	echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
 fi
 
-# Clear vendor USB config because it is only needed for debugging
-setprop persist.vendor.usb.config ""
+#
+# Allow USB enumeration with default PID/VID#
+#
+setprop persist.vendor.usb.config adb
+setprop ro.adb.secure 0
+setprop ro.debuggable 1
+setprop ro.secure 0
+# Start peripheral mode on primary USB controllers for Automotive platforms
+case "$soc_machine" in
+    "SA")
+	if [ -f /sys/bus/platform/devices/a600000.ssusb/mode ]; then
+	    default_mode=`cat /sys/bus/platform/devices/a600000.ssusb/mode`
+	    case "$default_mode" in
+		"none")
+		    echo peripheral > /sys/bus/platform/devices/a600000.ssusb/mode
+		;;
+	    esac
+	fi
+    ;;
+esac
 
-# Check configfs is mounted or not
+# set rndis transport to BAM2BAM_IPA for 8920 and 8940
+if [ "$target" == "msm8937" ]; then
+	if [ ! -d /config/usb_gadget ]; then
+	   case "$soc_id" in
+		"313" | "320")
+		   echo BAM2BAM_IPA > /sys/class/android_usb/android0/f_rndis_qc/rndis_transports
+		;;
+		*)
+		;;
+	   esac
+	fi
+fi
+
+# check configfs is mounted or not
 if [ -d /config/usb_gadget ]; then
-    # ADB requires valid iSerialNumber; if ro.serialno is missing, use dummy
-    serialnumber=`cat /config/usb_gadget/g1/strings/0x409/serialnumber` 2> /dev/null
-    if [ "$serialnumber" == "" ]; then
-        serialno=1234567
-        echo $serialno > /config/usb_gadget/g1/strings/0x409/serialnumber
-    fi
-    setprop vendor.usb.configfs 1
+	# ADB requires valid iSerialNumber; if ro.serialno is missing, use dummy
+	serialnumber=`cat /config/usb_gadget/g1/strings/0x409/serialnumber 2> /dev/null`
+	if [ "$serialnumber" == "" ]; then
+		serialno=1234567
+		echo $serialno > /config/usb_gadget/g1/strings/0x409/serialnumber
+	fi
+persist_comp=`getprop persist.vendor.usb.config`
+        comp=`getprop sys.usb.config`
+	echo $persist_comp
+	echo $comp
+	if [ "$comp" != "$persist_comp" ]; then
+		echo "setting sys.usb.config"
+		setprop sys.usb.config $persist_comp
+	fi
+	setprop sys.usb.configfs 1
+	setprop vendor.usb.configfs 1
 fi
 
 #
@@ -59,61 +106,69 @@ fi
 #
 diag_extra=`getprop persist.vendor.usb.config.extra`
 if [ "$diag_extra" == "" ]; then
-    setprop persist.vendor.usb.config.extra none
+	setprop persist.vendor.usb.config.extra none
 fi
 
+# enable rps cpus on msm8937 target
+setprop vendor.usb.rps_mask 0
+case "$soc_id" in
+	"294" | "295" | "353" | "354")
+		setprop vendor.usb.rps_mask 40
+	;;
+esac
+
 #
-# Initialize UVC configuration.
+# Initialize UVC conifguration.
 #
 if [ -d /config/usb_gadget/g1/functions/uvc.0 ]; then
-    cd /config/usb_gadget/g1/functions/uvc.0
+	cd /config/usb_gadget/g1/functions/uvc.0
 
-    echo 3072 > streaming_maxpacket
-    echo 1 > streaming_maxburst
-    mkdir control/header/h
-    ln -s control/header/h control/class/fs/
-    ln -s control/header/h control/class/ss
+	echo 3072 > streaming_maxpacket
+	echo 1 > streaming_maxburst
+	mkdir control/header/h
+	ln -s control/header/h control/class/fs/
+	ln -s control/header/h control/class/ss
 
-    mkdir -p streaming/uncompressed/u/360p
-    echo "666666\n1000000\n5000000\n" > streaming/uncompressed/u/360p/dwFrameInterval
+	mkdir -p streaming/uncompressed/u/360p
+	echo "666666\n1000000\n5000000\n" > streaming/uncompressed/u/360p/dwFrameInterval
 
-    mkdir -p streaming/uncompressed/u/720p
-    echo 1280 > streaming/uncompressed/u/720p/wWidth
-    echo 720 > streaming/uncompressed/u/720p/wWidth
-    echo 29491200 > streaming/uncompressed/u/720p/dwMinBitRate
-    echo 29491200 > streaming/uncompressed/u/720p/dwMaxBitRate
-    echo 1843200 > streaming/uncompressed/u/720p/dwMaxVideoFrameBufferSize
-    echo 5000000 > streaming/uncompressed/u/720p/dwDefaultFrameInterval
-    echo "5000000\n" > streaming/uncompressed/u/720p/dwFrameInterval
+	mkdir -p streaming/uncompressed/u/720p
+	echo 1280 > streaming/uncompressed/u/720p/wWidth
+	echo 720 > streaming/uncompressed/u/720p/wWidth
+	echo 29491200 > streaming/uncompressed/u/720p/dwMinBitRate
+	echo 29491200 > streaming/uncompressed/u/720p/dwMaxBitRate
+	echo 1843200 > streaming/uncompressed/u/720p/dwMaxVideoFrameBufferSize
+	echo 5000000 > streaming/uncompressed/u/720p/dwDefaultFrameInterval
+	echo "5000000\n" > streaming/uncompressed/u/720p/dwFrameInterval
 
-    mkdir -p streaming/mjpeg/m/360p
-    echo "666666\n1000000\n5000000\n" > streaming/mjpeg/m/360p/dwFrameInterval
+	mkdir -p streaming/mjpeg/m/360p
+	echo "666666\n1000000\n5000000\n" > streaming/mjpeg/m/360p/dwFrameInterval
 
-    mkdir -p streaming/mjpeg/m/720p
-    echo 1280 > streaming/mjpeg/m/720p/wWidth
-    echo 720 > streaming/mjpeg/m/720p/wWidth
-    echo 29491200 > streaming/mjpeg/m/720p/dwMinBitRate
-    echo 29491200 > streaming/mjpeg/m/720p/dwMaxBitRate
-    echo 1843200 > streaming/mjpeg/m/720p/dwMaxVideoFrameBufferSize
-    echo 5000000 > streaming/mjpeg/m/720p/dwDefaultFrameInterval
-    echo "5000000\n" > streaming/mjpeg/m/720p/dwFrameInterval
+	mkdir -p streaming/mjpeg/m/720p
+	echo 1280 > streaming/mjpeg/m/720p/wWidth
+	echo 720 > streaming/mjpeg/m/720p/wWidth
+	echo 29491200 > streaming/mjpeg/m/720p/dwMinBitRate
+	echo 29491200 > streaming/mjpeg/m/720p/dwMaxBitRate
+	echo 1843200 > streaming/mjpeg/m/720p/dwMaxVideoFrameBufferSize
+	echo 5000000 > streaming/mjpeg/m/720p/dwDefaultFrameInterval
+	echo "5000000\n" > streaming/mjpeg/m/720p/dwFrameInterval
 
-    echo 0x04 > /config/usb_gadget/g1/functions/uvc.0/streaming/mjpeg/m/bmaControls
+	echo 0x04 > /config/usb_gadget/g1/functions/uvc.0/streaming/mjpeg/m/bmaControls
 
-    mkdir -p streaming/h264/h/960p
-    echo 1920 > streaming/h264/h/960p/wWidth
-    echo 960 > streaming/h264/h/960p/wWidth
-    echo 40 > streaming/h264/h/960p/bLevelIDC
-    echo "333667\n" > streaming/h264/h/960p/dwFrameInterval
+	mkdir -p streaming/h264/h/960p
+	echo 1920 > streaming/h264/h/960p/wWidth
+	echo 960 > streaming/h264/h/960p/wWidth
+	echo 40 > streaming/h264/h/960p/bLevelIDC
+	echo "333667\n" > streaming/h264/h/960p/dwFrameInterval
 
-    mkdir -p streaming/h264/h/1920p
-    echo "333667\n" > streaming/h264/h/1920p/dwFrameInterval
+	mkdir -p streaming/h264/h/1920p
+	echo "333667\n" > streaming/h264/h/1920p/dwFrameInterval
 
-    mkdir streaming/header/h
-    ln -s streaming/uncompressed/u streaming/header/h
-    ln -s streaming/mjpeg/m streaming/header/h
-    ln -s streaming/h264/h streaming/header/h
-    ln -s streaming/header/h streaming/class/fs/
-    ln -s streaming/header/h streaming/class/hs/
-    ln -s streaming/header/h streaming/class/ss/
+	mkdir streaming/header/h
+	ln -s streaming/uncompressed/u streaming/header/h
+	ln -s streaming/mjpeg/m streaming/header/h
+	ln -s streaming/h264/h streaming/header/h
+	ln -s streaming/header/h streaming/class/fs/
+	ln -s streaming/header/h streaming/class/hs/
+	ln -s streaming/header/h streaming/class/ss/
 fi
