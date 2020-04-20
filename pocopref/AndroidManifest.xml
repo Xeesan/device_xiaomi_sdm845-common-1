@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lineageos.settings.pocopref"
+    android:versionCode="1"
+    android:versionName="1.0"
+    android:sharedUserId="android.uid.system">
+
+    <uses-permission android:name="android.permission.INJECT_EVENTS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <protected-broadcast android:name="com.lineageos.settings.pocopref.CUST_UPDATE" />
+
+    <uses-sdk
+        android:minSdkVersion="27"
+        android:targetSdkVersion="27"/>
+
+    <application
+        android:persistent="true"
+        android:icon="@drawable/ic_settings_pocopref"
+        android:label="@string/pocopref_title"
+        android:theme="@android:style/Theme.DeviceDefault.Settings">
+        <activity
+            android:name=".PocoPrefSettings"
+            android:label="@string/pocopref_title"
+            android:theme="@android:style/Theme.DeviceDefault.Settings">
+            <intent-filter>
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.device" />
+            <meta-data
+                android:name="com.android.settings.icon"
+                android:resource="@drawable/ic_settings_pocopref" />
+        </activity>
+        <activity
+            android:name="com.lineageos.settings.pocopref.AppProfilesActivity"
+            android:exported="true"
+            android:label="@string/app_settings_title"
+            android:theme="@android:style/Theme.DeviceDefault.Settings">			
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>	
+        </activity>
+        <activity
+            android:name="com.lineageos.settings.pocopref.AppProfileActivity"
+            android:exported="true"
+            android:label="@string/app_settings_title"
+            android:theme="@android:style/Theme.DeviceDefault.Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        </activity>
+    </application>
+</manifest>

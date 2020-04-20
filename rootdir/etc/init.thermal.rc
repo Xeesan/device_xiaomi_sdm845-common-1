@@ -1,0 +1,65 @@
+on boot
+    setprop "baikal.eng.therm.profile" "default"
+
+on property:baikal.eng.therm.profile=default
+    setprop "baikal.eng.therm.profile" "balance"
+
+# Balance (default profile)
+on property:baikal.eng.therm.profile=balance
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine.conf"
+    stop thermal-engine
+    start thermal-engine
+
+# High
+on property:baikal.eng.therm.profile=high
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-evaluation.conf"
+    stop thermal-engine
+    start thermal-engine
+
+# Cool
+on property:baikal.eng.therm.profile=cool
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-extreme.conf"
+    stop thermal-engine
+    start thermal-engine
+
+
+# Gaming
+on property:baikal.eng.therm.profile=gaming
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-game.conf"
+    stop thermal-engine
+    start thermal-engine
+
+# Gaming 2  - PUBG HD
+on property:baikal.eng.therm.profile=gaming2
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-game2.conf"
+    stop thermal-engine
+    start thermal-engine
+
+# Camera
+on property:baikal.eng.therm.profile=camera
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-camera.conf"
+    stop thermal-engine
+    start thermal-engine
+
+# VR
+on property:baikal.eng.therm.profile=vr
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-arvr.conf"
+    stop thermal-engine
+    start thermal-engine
+
+
+#on property:baikal.eng.therm.profile=*
+#    setprop "baikal.eng.therm.profile" "default"
+
+
+
+# DEFAULT(0), // Balance
+# EXTREME(2), // Cool
+# INCALL(8), // InCall
+# GAME(9), // Game
+# NOLIMITS(10), // NoLimits
+# CLASS_0(11), // ?
+# CAMERA(12), // Camera
+# PUBG(13), // Game2
+# YOUTUBE(14), // Video
+# ARVR(15),  // VR

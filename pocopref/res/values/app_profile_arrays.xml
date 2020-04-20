@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="performance_listentries">
+    	<item>@string/performance_default</item>
+    	<item>@string/performance_balance</item>
+    	<item>@string/performance_performance</item>
+    	<item>@string/performance_gaming</item>
+    	<item>@string/performance_battery</item>
+     </string-array>
+     <string-array name="performance_listvalues">
+    	<item>default</item>
+    	<item>balance</item>
+    	<item>performance</item>
+    	<item>gaming</item>
+    	<item>battery</item>
+    </string-array>
+
+    <string-array name="thermal_listentries">
+    	<item>@string/thermal_default</item>
+    	<item>@string/thermal_balance</item>
+    	<item>@string/thermal_gaming</item>
+    	<item>@string/thermal_gaming2</item>
+    	<item>@string/thermal_nolimits</item>
+    	<item>@string/thermal_high</item>
+    	<item>@string/thermal_cool</item>
+    	<item>@string/thermal_camera</item>
+    	<item>@string/thermal_incall</item>
+    	<item>@string/thermal_vr</item>
+     </string-array>
+     <string-array name="thermal_listvalues">
+    	<item>default</item>
+    	<item>balance</item>
+    	<item>gaming</item>
+    	<item>gaming2</item>
+    	<item>nolimits</item>
+    	<item>high</item>
+    	<item>cool</item>
+    	<item>camera</item>
+    	<item>incall</item>
+    	<item>vr</item>
+    </string-array>
+    <string-array name="brightness_listentries">
+    	<item>@string/brightness_default</item>
+    	<item>@string/brightness_reduced</item>
+    	<item>@string/brightness_quarter</item>
+    	<item>@string/brightness_full</item>
+    	<item>@string/brightness_10</item>
+    	<item>@string/brightness_20</item>
+    	<item>@string/brightness_30</item>
+    	<item>@string/brightness_40</item>
+    	<item>@string/brightness_50</item>
+    	<item>@string/brightness_60</item>
+    	<item>@string/brightness_70</item>
+    	<item>@string/brightness_80</item>
+    	<item>@string/brightness_90</item>
+     </string-array>
+     <string-array name="brightness_listvalues">
+    	<item>0</item>
+    	<item>10</item>
+    	<item>12</item>
+    	<item>11</item>
+    	<item>1</item>
+    	<item>2</item>
+    	<item>3</item>
+    	<item>4</item>
+    	<item>5</item>
+    	<item>6</item>
+    	<item>7</item>
+    	<item>8</item>
+    	<item>9</item>
+    </string-array>
+
+    <string-array name="fps_listentries">
+    	<item>Default(60)</item>
+    	<item>10</item>
+    	<item>30</item>
+    	<item>60</item>
+    	<item>80</item>
+    	<item>90</item>
+     </string-array>
+     <string-array name="fps_listvalues">
+    	<item>0</item>
+    	<item>10</item>
+    	<item>30</item>
+    	<item>60</item>
+    	<item>80</item>
+    	<item>90</item>
+    </string-array>
+
+</resources>

@@ -136,11 +136,14 @@ PRODUCT_PACKAGES += \
     init.qti.fm.sh \
     init.qcom.rc \
     init.msm.usb.configfs.rc \
+    init.profiles.rc \
     init.qcom.usb.rc \
     init.target.rc \
     ueventd.qcom.rc \
+    init.performance.rc \
     init.qcom.factory.rc \
     init.remosaic.rc \
+    init.thermal.rc \
     init.recovery.qcom.rc
 
 # Context Hub
@@ -246,6 +249,10 @@ PRODUCT_COPY_FILES += \
 # Net
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0
+
+# PocoPref settigs modules
+PRODUCT_PACKAGES += \
+    PocoPref
 
 # power
 PRODUCT_PACKAGES += \

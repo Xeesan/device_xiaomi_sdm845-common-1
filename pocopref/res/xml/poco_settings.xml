@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="boost"
+        android:title="@string/boost_settings_title" >
+        <SwitchPreference
+            android:key="interaction.boost"
+            android:defaultValue="false"
+            android:title="@string/boost_title"
+            android:summary="@string/boost_summary" />
+  </PreferenceCategory>
+
+    <PreferenceCategory
+            android:title="@string/app_settings_category">
+
+        <PreferenceScreen
+                android:key="appprofile"
+                android:fragment="com.lineageos.settings.pocopref.AppProfilesActivity"
+                android:summary="@string/app_settings_summary"
+                android:title="@string/app_settings_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/powersave_title" >
+
+
+    <com.lineageos.settings.pocopref.GlobalSettingSwitchPreference
+        android:key="baikalos_extreme_idle"
+        android:title="@string/baikal_extreme_saver_enabled_enabled_title"
+        android:summary="@string/baikal_extreme_saver_enabled_enabled_summary"
+        android:defaultValue="false"
+        android:disableDependentsState="true" />
+
+    <com.lineageos.settings.pocopref.GlobalSettingSwitchPreference
+        android:key="baikalos_hide_gms"
+        android:title="@string/powersave_hide_idle_title"
+        android:summary="@string/powersave_hide_idle_summary"
+        android:defaultValue="false"
+        android:disableDependentsState="true" />
+
+    <com.lineageos.settings.pocopref.GlobalSettingSwitchPreference
+        android:key="baikalos_unrestricted_net"
+        android:title="@string/powersave_unrestricted_network_title"
+        android:summary="@string/powersave_unrestricted_network_summary"
+        android:defaultValue="false"
+        android:disableDependentsState="true" />
+
+    <Preference android:title="@string/prefs_battery_saver_title" 
+		    android:summary="@string/prefs_battery_saver_summary">
+	    <intent android:action="android.settings.IGNORE_BATTERY_OPTIMIZATION_SETTINGS"/>
+    </Preference>
+
+    <com.lineageos.settings.pocopref.GlobalSettingSwitchPreference
+        android:key="baikalos_aggressive_idle"
+        android:title="@string/device_idle_aggressive_title"
+        android:summary="@string/device_idle_aggressive_summary"
+        android:defaultValue="false"
+        android:disableDependentsState="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
