@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
+  <PreferenceCategory
+            android:title="@string/graphics_title">
+
+        <PreferenceScreen
+                android:key="xiaomi_display"
+                android:fragment="com.lineageos.settings.pocopref.XiaomiDisplay"
+                android:summary="@string/xiaomi_display_summary"
+                android:title="@string/xiaomi_display_title" />
+
+    </PreferenceCategory>
+ 
+   <PreferenceCategory
         android:key="boost"
         android:title="@string/boost_settings_title" >
         <SwitchPreference

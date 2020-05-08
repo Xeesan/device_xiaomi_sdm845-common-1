@@ -30,4 +30,32 @@
     <string name="app_settings_title">Per-App Profiles</string>
     <string name="app_settings_summary">Choose per-app settings for Battery, Performance, Thermal, brightnes etc...</string>
 
+    <string name="xiaomi_display_title">Display Modes</string>
+    <string name="xiaomi_display_summary">Color Scheme</string>
+    <string name="xiaomi_display_profile_title">Color Profile</string>
+
+    <string name="xiaomi_display_adapt_1">Adapt (Warm)</string>
+    <string name="xiaomi_display_adapt_2">Adapt (Cool)</string>
+    <string name="xiaomi_display_adapt_3">Adapt (Default)</string>
+    <string name="xiaomi_display_enhance">Enhance</string>
+    <string name="xiaomi_display_standard">Standard</string>
+   
+    <string name="color_temp">COLOR TEMPERATURE</string>
+
+    <string name="summary_adapt_1">Adjust colors based on the current lighting</string>
+    <string name="summary_adapt_2">Adjust colors based on the current lighting</string>
+    <string name="summary_adapt_3">Adjust colors based on the current lighting</string>
+    <string name="summary_enhance">Always enhance colors</string>
+    <string name="summary_standard">Contrast will remain Constant</string>
+
+
+    <string name="game_display_default">Default</string>
+    <string name="game_display_brightness">Brightness</string>
+    <string name="game_display_contrast">Contrast</string>
+    <string name="game_display_both">Brightness+Contrast</string>
+    <string name="game_display_profile_title">Enhanced Gaming Display</string>
+
+    <!-- Category title -->
+    <string name="graphics_title">Graphics</string>
+
 </resources>

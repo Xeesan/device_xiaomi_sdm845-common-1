@@ -704,14 +704,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.xiaomi.hardware.fingerprintextension</name>
+        <name>vendor.xiaomi.hardware.displayfeature</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>IXiaomiFingerprint</name>
+            <name>IDisplayFeature</name>
             <instance>default</instance>
         </interface>
-    </hal>
+        <fqname>@1.0::IDisplayFeature/default</fqname>
+    </hal>	    
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.mlipay</name>
         <transport>hwbinder</transport>

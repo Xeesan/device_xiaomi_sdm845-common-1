@@ -61,5 +61,20 @@
                 <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
         </activity>
+        <activity
+            android:name="com.lineageos.settings.pocopref.XiaomiDisplay"
+            android:exported="true"
+            android:label="@string/xiaomi_display_title"
+            android:theme="@android:style/Theme.DeviceDefault.Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="com.lineageos.settings.pocopref.Startup" >
+            <intent-filter android:priority="100" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

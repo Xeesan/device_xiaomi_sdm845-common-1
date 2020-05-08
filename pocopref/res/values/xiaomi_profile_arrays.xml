@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="xiaomi_display_listentries">
+    	<item>@string/xiaomi_display_adapt_1</item>
+        <item>@string/xiaomi_display_adapt_2</item>
+        <item>@string/xiaomi_display_adapt_3</item>
+    	<item>@string/xiaomi_display_enhance</item>
+    	<item>@string/xiaomi_display_standard</item>
+     </string-array>
+
+     <string-array name="xiaomi_display_listvalues">
+    	<item>ADAPT 1</item>
+        <item>ADAPT 2</item>
+        <item>ADAPT 3</item>
+    	<item>ENHANCE 1</item>
+    	<item>STANDARD 1</item>
+    </string-array>
+
+    <string-array name="xiaomi_display_summary">
+        <item>@string/summary_adapt_1</item>
+        <item>@string/summary_adapt_2</item>
+        <item>@string/summary_adapt_3</item>
+        <item>@string/summary_enhance</item>
+        <item>@string/summary_standard</item>
+     </string-array>
+
+    <string-array name="game_display_listentries">
+        <item>@string/game_display_default</item>
+        <item>@string/game_display_brightness</item>
+        <item>@string/game_display_contrast</item>
+        <item>@string/game_display_both</item>
+     </string-array>
+
+     <string-array name="game_display_listvalues">
+        <item>GAME_HDR 0</item>
+        <item>GAME_HDR 2</item>
+        <item>GAME_HDR -38</item>
+        <item>GAME_HDR 41</item>
+     </string-array>
+
+
+</resources>

@@ -51,6 +51,7 @@ public class PocoPrefSettings extends PreferenceActivity implements OnPreference
     private Preference mPowerSave;
     private Context mContext;
     private SharedPreferences mPreferences;
+    private Preference mKcalPref;	
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,15 @@ public class PocoPrefSettings extends PreferenceActivity implements OnPreference
                          return true;
                      }
                 });
+        mKcalPref = findPreference("xiaomi_display");
+                mKcalPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                     @Override
+                     public boolean onPreferenceClick(Preference preference) {
+                         Intent intent = new Intent(getApplicationContext(), XiaomiDisplay.class);
+                         startActivity(intent);
+                         return true;
+                     }
+                });				
 /*
  *      mPowerSave = findPreference("powersave");
  *             mAppprofile.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
