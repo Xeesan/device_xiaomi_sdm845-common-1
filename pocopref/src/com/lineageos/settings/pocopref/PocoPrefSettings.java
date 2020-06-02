@@ -51,7 +51,11 @@ public class PocoPrefSettings extends PreferenceActivity implements OnPreference
     private Preference mPowerSave;
     private Context mContext;
     private SharedPreferences mPreferences;
-    private Preference mKcalPref;	
+    private Preference mKcalPref;
+    private ListPreference mDefaultPerfProfile;
+    private ListPreference mDefaultThermProfile;
+    private ListPreference mScrOffPerfProfile;
+    private ListPreference mIdlePerfProfile;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,7 +78,7 @@ public class PocoPrefSettings extends PreferenceActivity implements OnPreference
                          startActivity(intent);
                          return true;
                      }
-                });				
+                });
 /*
  *      mPowerSave = findPreference("powersave");
  *             mAppprofile.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -99,6 +103,80 @@ public class PocoPrefSettings extends PreferenceActivity implements OnPreference
  //           mTHERMAL.setValue(SystemProperties.get(THERMAL_SYSTEM_PROPERTY, "0"));
  //           mTHERMAL.setOnPreferenceChangeListener(this);
  //       }
+
+
+            mDefaultPerfProfile = (ListPreference) findPreference("default_perf_profile");
+            if( mDefaultPerfProfile != null ) {
+                    String profile = getSystemPropertyString("persist.baikal.perf.default","balance");
+                    Log.e(TAG, "mDefaultPerfProfile: getProfile=" + profile);
+                    mDefaultPerfProfile.setValue(profile);
+                    mDefaultPerfProfile.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                      public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        try {
+                            Log.e(TAG, "mDefaultPerfProfile: setProfile=" + newValue.toString());
+			                setSystemPropertyString("persist.baikal.perf.default",newValue.toString());
+                        } catch(Exception re) {
+                            Log.e(TAG, "onCreate: mDefaultPerfProfile Fatal! exception", re );
+                        }
+                        return true;
+                      }
+                    });
+                }
+
+            mDefaultThermProfile = (ListPreference) findPreference("default_therm_profile");
+            if( mDefaultThermProfile != null ) {
+                    String profile = getSystemPropertyString("persist.baikal.therm.default","balance");
+                    Log.e(TAG, "mDefaultThermProfile: getProfile=" + profile);
+                    mDefaultThermProfile.setValue(profile);
+                    mDefaultThermProfile.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                      public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        try {
+                            Log.e(TAG, "mDefaultThermProfile: setProfile=" + newValue.toString());
+			                setSystemPropertyString("persist.baikal.therm.default",newValue.toString());
+                        } catch(Exception re) {
+                            Log.e(TAG, "onCreate: mDefaultPerfProfile Fatal! exception", re );
+                        }
+                        return true;
+                      }
+                    });
+                }
+
+            mScrOffPerfProfile = (ListPreference) findPreference("scr_off_perf_profile");
+            if( mScrOffPerfProfile != null ) { 
+                    String profile = getSystemPropertyString("persist.baikal.perf.scr_off","battery");
+                    Log.e(TAG, "mScrOffPerfProfile: getProfile=" + profile);
+                    mScrOffPerfProfile.setValue(profile);
+                    mScrOffPerfProfile.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                      public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        try {
+                            Log.e(TAG, "mScrOffPerfProfile: setProfile=" + newValue.toString());
+			                setSystemPropertyString("persist.baikal.perf.scr_off",newValue.toString());
+                        } catch(Exception re) {
+                            Log.e(TAG, "onCreate: mScrOffPerfProfile Fatal! exception", re );
+                        }
+                        return true;
+                      }
+                    });
+                }
+
+
+            mIdlePerfProfile = (ListPreference) findPreference("idle_perf_profile");
+            if( mIdlePerfProfile != null ) {
+                    String profile = getSystemPropertyString("persist.baikal.perf.idle","battery");
+                    Log.e(TAG, "mScrOffPerfProfile: getProfile=" + profile);
+                    mIdlePerfProfile.setValue(profile);
+                    mIdlePerfProfile.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                      public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        try {
+                            Log.e(TAG, "mIdlePerfProfile: setProfile=" + newValue.toString());
+			                setSystemPropertyString("persist.baikal.perf.idle",newValue.toString());
+                        } catch(Exception re) {
+                            Log.e(TAG, "onCreate: mIdlePerfProfile Fatal! exception", re );
+                        }
+                        return true;
+                      }
+                    });
+                }
 
 }
 
@@ -140,4 +218,24 @@ public class PocoPrefSettings extends PreferenceActivity implements OnPreference
     	setEnable(key,value);
 	return true;
     }
+    
+     private void setSystemPropertyString(String key, String value) {
+        Log.e(TAG, "setSystemPropertyBoolean: key=" + key + ", value=" + value);
+        SystemProperties.set(key, value);
+    }
+
+    private String getSystemPropertyString(String key, String def) {
+        return SystemProperties.get(key,def);
+    }
+
+    private boolean getSystemPropertyBoolean(String key) {
+        if( SystemProperties.get(key,"0").equals("1") || SystemProperties.get(key,"0").equals("true") ) return true;
+	    return false;
+    }
+
+    private void setSystemPropertyBoolean(String key, boolean value) {
+        String text = value?"1":"0";
+        Log.e(TAG, "setSystemPropertyBoolean: key=" + key + ", value=" + value);
+        SystemProperties.set(key, text);
+    }   
 }

@@ -4,12 +4,18 @@ on boot
 
 
 #Perfroamnce framework to device map
+on property:persist.baikal.perf.default=*
+    setprop "baikal.eng.perf.profile" "temporary"
+    setprop "baikal.eng.perf.profile" ${persist.baikal.perf.default:-"balance"}
 
 on property:baikal.perf.profile=default
     setprop "baikal.eng.perf.profile" ${persist.baikal.perf.default:-"balance"}
 
 on property:baikal.perf.profile=balance
     setprop "baikal.eng.perf.profile" "balance"
+
+on property:baikal.perf.profile=video
+    setprop "baikal.eng.perf.profile" "video"
 
 on property:baikal.perf.profile=performance
     setprop "baikal.eng.perf.profile" "performance"
@@ -23,7 +29,32 @@ on property:baikal.perf.profile=battery
 on property:baikal.perf.profile=reader
     setprop "baikal.eng.perf.profile" "battery"
 
+on property:persist.baikal.perf.scr_off=*
+    setprop "baikal.eng.perf.scr_off" ${persist.baikal.perf.scr_off:-"battery"}
+
+on property:baikal.eng.perf.scr_off=default
+    setprop "baikal.eng.perf.scr_off" ${persist.baikal.perf.default:-"balance"}
+
+on property:baikal.perf.profile=screen_off
+    setprop "baikal.eng.perf.profile" ${baikal.eng.perf.scr_off:-"battery"}
+
+on property:persist.baikal.perf.idle=*
+    setprop "baikal.eng.perf.idle" ${persist.baikal.perf.idle:-"battery"}
+
+on property:baikal.eng.perf.idle=default
+    setprop "baikal.eng.perf.idle" ${persist.baikal.perf.default:-"balance"}
+
+on property:baikal.perf.profile=idle
+    setprop "baikal.eng.perf.profile" ${baikal.eng.perf.idle:-"battery"}
+
+on property:baikal.eng.perf.profile=boost
+    setprop "baikal.eng.perf.profile" "balance"
+
 #Thermal framework to device map
+
+on property:persist.baikal.therm.default=*
+    setprop "baikal.eng.therm.profile" "temporary"
+    setprop "baikal.eng.therm.profile" ${persist.baikal.therm.default:-"balance"}
 
 on property:baikal.therm.profile=default
     setprop "baikal.eng.therm.profile" ${persist.baikal.therm.default:-"balance"}

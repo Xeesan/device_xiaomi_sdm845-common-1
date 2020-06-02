@@ -30,6 +30,9 @@
     <string name="app_settings_title">Per-App Profiles</string>
     <string name="app_settings_summary">Choose per-app settings for Battery, Performance, Thermal, brightnes etc...</string>
 
+    <string name="scr_off_profile_title">Screen off profile</string>
+    <string name="idle_profile_title">Idle profile</string>
+
     <string name="xiaomi_display_title">Display Modes</string>
     <string name="xiaomi_display_summary">Color Scheme</string>
     <string name="xiaomi_display_profile_title">Color Profile</string>
