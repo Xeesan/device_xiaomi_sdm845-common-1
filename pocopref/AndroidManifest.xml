@@ -76,5 +76,16 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+         <service
+            android:name="com.lineageos.settings.pocopref.GameTile"
+            android:enabled="true"
+            android:icon="@drawable/ic_enhanced_display"
+            android:label="@string/GameTile"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>       
+        
     </application>
 </manifest>

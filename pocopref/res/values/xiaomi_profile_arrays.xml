@@ -3,19 +3,23 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string-array name="xiaomi_display_listentries">
-    	<item>@string/xiaomi_display_adapt_1</item>
-        <item>@string/xiaomi_display_adapt_2</item>
-        <item>@string/xiaomi_display_adapt_3</item>
-    	<item>@string/xiaomi_display_enhance</item>
-    	<item>@string/xiaomi_display_standard</item>
+      <item>@string/xiaomi_display_adapt_1</item>
+      <item>@string/xiaomi_display_adapt_2</item>
+      <item>@string/xiaomi_display_adapt_3</item>
+      <item>@string/xiaomi_display_enhance</item>
+      <item>@string/xiaomi_display_standard</item>
+      <item>@string/xiaomi_display_custom</item>
+      <item>@string/xiaomi_display_eyecare</item>
      </string-array>
 
      <string-array name="xiaomi_display_listvalues">
-    	<item>ADAPT 1</item>
-        <item>ADAPT 2</item>
-        <item>ADAPT 3</item>
-    	<item>ENHANCE 1</item>
-    	<item>STANDARD 1</item>
+    	<item>1</item>
+      <item>2</item>
+      <item>3</item>
+    	<item>4</item>
+    	<item>5</item>
+    	<item>6</item>
+        <item>7</item>
     </string-array>
 
     <string-array name="xiaomi_display_summary">

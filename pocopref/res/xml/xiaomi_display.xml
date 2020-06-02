@@ -23,14 +23,87 @@
         android:defaultValue="default"
         android:summary="%s" />
 
-    <com.lineageos.settings.pocopref.utils.SeekBarPreference
-        android:key="color_temp"
-        android:title="@string/color_temp"
+   <PreferenceCategory
+      android:title="@string/xiaomi_eyecare_title">
+      
+    <com.lineageos.settings.pocopref.utils.SeekBarPreference 
+        android:key="kcal_eyecare"
+        android:title="@string/kcal_eyecare"           
         android:persistent="false"
         android:layout="@layout/slider_preference"
         android:recycleEnabled="false"
-        app:max_value="-100"
-        app:min_value="-10000000"
-        app:default_value="0"/>
+        app:max_value="19"
+        app:min_value="1"
+        app:default_value="10"/>      
+    </PreferenceCategory>      
+
+   <PreferenceCategory
+      android:title="@string/xiaomi_kcal_title">
+        
+    <com.lineageos.settings.pocopref.utils.SeekBarPreference 
+        android:key="kcal_red"
+        android:title="@string/kcal_red"           
+        android:persistent="false"
+        android:layout="@layout/slider_preference"
+        android:recycleEnabled="false"
+        app:max_value="256"
+        app:min_value="0"
+        app:default_value="256"/>
+    <com.lineageos.settings.pocopref.utils.SeekBarPreference
+        android:key="kcal_green"
+        android:title="@string/kcal_green"
+         android:persistent="false"
+        android:layout="@layout/slider_preference"
+        android:recycleEnabled="false"
+        app:max_value="256"
+        app:min_value="0"
+        app:default_value="256"/>
+    <com.lineageos.settings.pocopref.utils.SeekBarPreference
+        android:key="kcal_blue"
+        android:title="@string/kcal_blue"
+          android:persistent="false"
+        android:layout="@layout/slider_preference"
+        android:recycleEnabled="false"
+        app:max_value="256"
+        app:min_value="0"
+        app:default_value="256"/>
+    <com.lineageos.settings.pocopref.utils.SeekBarPreference
+        android:key="kcal_contrast"
+        android:title="@string/kcal_contrast"
+        android:persistent="false"
+        android:layout="@layout/slider_preference"
+        android:recycleEnabled="false"
+        app:max_value="380"
+        app:min_value="132"
+        app:default_value="255"/>
+    <com.lineageos.settings.pocopref.utils.SeekBarPreference
+        android:key="kcal_saturation"
+        android:title="@string/kcal_saturation"
+        android:persistent="false"
+        android:layout="@layout/slider_preference"
+        android:recycleEnabled="false"
+        app:max_value="374"
+        app:min_value="223"
+        app:default_value="255"/>
+    <com.lineageos.settings.pocopref.utils.SeekBarPreference
+        android:key="kcal_value"
+        android:title="@string/kcal_value"
+        android:persistent="false"
+        android:layout="@layout/slider_preference"
+        android:recycleEnabled="false"
+        app:max_value="334"
+        app:min_value="128"
+        app:default_value="255"/> 
+     <com.lineageos.settings.pocopref.utils.SeekBarPreference
+        android:key="kcal_hue"
+        android:title="@string/kcal_hue"
+        android:persistent="false"
+        android:layout="@layout/slider_preference"
+        android:recycleEnabled="false"
+        app:max_value="1536"
+        app:min_value="0"
+        app:default_value="0"/>  
+        
+    </PreferenceCategory>                      
 
 </PreferenceScreen>

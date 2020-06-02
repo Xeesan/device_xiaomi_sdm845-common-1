@@ -42,6 +42,8 @@
     <string name="xiaomi_display_adapt_3">Adapt (Default)</string>
     <string name="xiaomi_display_enhance">Enhance</string>
     <string name="xiaomi_display_standard">Standard</string>
+    <string name="xiaomi_display_custom">Custom</string> 
+   <string name="xiaomi_display_eyecare">EyeCare</string>        
    
     <string name="color_temp">COLOR TEMPERATURE</string>
 
@@ -60,5 +62,18 @@
 
     <!-- Category title -->
     <string name="graphics_title">Graphics</string>
+    <string name="kcal_red">Red</string>
+    <string name="kcal_green">Green</string>
+    <string name="kcal_blue">Blue</string>
+    <string name="kcal_saturation">Saturation</string>
+    <string name="kcal_contrast">Constrast</string>
+    <string name="kcal_value">Value</string>
+    <string name="kcal_hue">Hue</string>
+    <string name="menu_reset">Reset</string>
+    <string name="xiaomi_kcal_title">Color Temperature</string>
+
+    <string name="xiaomi_eyecare_title">Eyecare Intensity</string>
+    <string name="kcal_eyecare">Intensity</string>
+    <string name="GameTile">Enhanced Display</string>              
 
 </resources>
