@@ -30,11 +30,6 @@ public class GameTile extends TileService {
     private static final String TAG = Shell.class.getSimpleName();
 
     @Override
-    public void onStartListening() {
-        resetTileStatus();
-    }
-
-    @Override
     public void onClick() {
         updateTile();
     }
@@ -84,32 +79,4 @@ public class GameTile extends TileService {
         }
    }
 
-    private void resetTileStatus() {
-        int profile = 0;
-        Tile tile = this.getQsTile();
-        Icon newIcon;
-      	newIcon =  Icon.createWithResource(getApplicationContext(), R.drawable.ic_enhanced_display);
-        String newLabel;
-        int newState;
-
-        if (profile == 3) {
-		newLabel = "Saturation";
-		newState = Tile.STATE_ACTIVE;
-            } else if (profile == 2) {
-		newLabel = "Bright";
-		newState = Tile.STATE_ACTIVE;
-            } else if (profile == 1) {
-		newLabel = "Default";
-		newState = Tile.STATE_INACTIVE;
-            } else {
-		newLabel = "Bri+Sat";
-		newState = Tile.STATE_ACTIVE;
-            }
-
-        // Change the UI of the tile.
-        tile.setLabel(newLabel);
-        tile.setIcon(newIcon);
-        tile.setState(newState);
-        tile.updateTile();
-    }
 }
