@@ -99,6 +99,18 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/dsb_title" >
+        
+    <com.lineageos.settings.pocopref.GlobalSettingSwitchPreference        
+        android:key="baikalos_dlsb_enabled"
+        android:title="@string/baikalos_dlsb_enabled_title"
+        android:summary="@string/baikalos_dlsb_enabled_summary"
+        android:defaultValue="false"
+        android:disableDependentsState="true" />
+        
+    </PreferenceCategory> 
+
       <PreferenceCategory
         android:key="thermal_engine"
         android:title="@string/thermal_engine_title">
