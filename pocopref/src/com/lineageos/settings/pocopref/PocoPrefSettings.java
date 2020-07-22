@@ -52,6 +52,7 @@ public class PocoPrefSettings extends PreferenceActivity implements OnPreference
     private Context mContext;
     private SharedPreferences mPreferences;
     private Preference mKcalPref;
+    private ListPreference mThermalEngine;	
     private ListPreference mDefaultPerfProfile;
     private ListPreference mDefaultThermProfile;
     private ListPreference mScrOffPerfProfile;
@@ -117,6 +118,24 @@ public class PocoPrefSettings extends PreferenceActivity implements OnPreference
 			                setSystemPropertyString("persist.baikal.perf.default",newValue.toString());
                         } catch(Exception re) {
                             Log.e(TAG, "onCreate: mDefaultPerfProfile Fatal! exception", re );
+                        }
+                        return true;
+                      }
+                    });
+                }
+
+            mThermalEngine = (ListPreference) findPreference("default_therm_engine");
+            if( mThermalEngine != null ) {
+                    String profile = getSystemPropertyString("persist.thermal.engine","stock");
+                    Log.e(TAG, "mThermalEngine: getProfile=" + profile);
+                    mThermalEngine.setValue(profile);
+                    mThermalEngine.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                      public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        try {
+                            Log.e(TAG, "mThermalEngine: setProfile=" + newValue.toString());
+			                setSystemPropertyString("persist.thermal.engine",newValue.toString());
+                        } catch(Exception re) {
+                            Log.e(TAG, "onCreate: mThermalEngine Fatal! exception", re );
                         }
                         return true;
                       }

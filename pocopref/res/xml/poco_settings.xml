@@ -99,4 +99,17 @@
 
     </PreferenceCategory>
 
+      <PreferenceCategory
+        android:key="thermal_engine"
+        android:title="@string/thermal_engine_title">
+
+        <ListPreference
+    	    android:key="default_therm_engine"
+    	    android:title="@string/thermal_engine_profile_title"
+    	    android:entries="@array/thermal_engine_listentries"
+    	    android:entryValues="@array/thermal_engine_listvalues" 
+          android:defaultValue="stock"
+          android:summary="@string/thermal_engine_summary"/>	
+     </PreferenceCategory> 
+
 </PreferenceScreen>

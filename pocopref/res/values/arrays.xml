@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string-array name="thermal_profiles">
-		<item>Default</item>
-		<item>Game</item>
-		<item>Performance</item>
-		<item>Browser</item>
-		<item>Camera</item>
-		<item>PUBG</item>
+	<string-array name="thermal_engine_listentries">
+		<item>STOCK</item>
+		<item>VERSION 1</item>
+		<item>VERSION 2</item>
 	</string-array>
-	<string-array name="thermal_values">
-		<item>0</item>
-		<item>1</item>
-		<item>2</item>
-		<item>3</item>
-        <item>4</item>
-        <item>5</item>		
+	<string-array name="thermal_engine_listvalues">
+		<item>stock</item>
+		<item>oneplus</item>
+		<item>vivo</item>
 	</string-array>
 </resources>

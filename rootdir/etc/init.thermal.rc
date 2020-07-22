@@ -63,3 +63,18 @@ on property:baikal.eng.therm.profile=vr
 # PUBG(13), // Game2
 # YOUTUBE(14), // Video
 # ARVR(15),  // VR
+
+on property:persist.thermal.engine=stock
+      mount none /system/bin/thermal/stock/thermal-engine /vendor/bin/thermal-engine bind
+
+on property:persist.thermal.engine=oneplus
+       mount none /system/bin/thermal/oneplus/thermal-engine /vendor/bin/thermal-engine bind
+       
+on property:persist.thermal.engine=vivo
+       mount none /system/bin/thermal/vivo/thermal-engine /vendor/bin/thermal-engine bind
+
+
+
+
+
+

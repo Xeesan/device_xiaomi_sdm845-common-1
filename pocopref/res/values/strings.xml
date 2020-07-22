@@ -74,6 +74,11 @@
 
     <string name="xiaomi_eyecare_title">Eyecare Intensity</string>
     <string name="kcal_eyecare">Intensity</string>
-    <string name="GameTile">Enhanced Display</string>              
+    <string name="GameTile">Enhanced Display</string> 
+
+    <string name="thermal_engine_title">Thermal Engine</string>
+    <string name="thermal_engine_profile_title">Select Thermal Engine Version</string>
+    <string name="thermal_engine_summary">Facing Touch latency issues or FPS drops during gaming ?try out different thermal engine verions which fixes ur issue, REBOOT REQUIRED</string>
+             
 
 </resources>
