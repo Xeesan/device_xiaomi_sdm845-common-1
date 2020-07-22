@@ -256,7 +256,7 @@ PRODUCT_PACKAGES += \
 
 # power
 PRODUCT_PACKAGES += \
-    power.qcom
+    android.hardware.power@1.2-service.xiaomi_sdm845
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/power/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
