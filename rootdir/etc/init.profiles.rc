@@ -14,6 +14,9 @@ on property:baikal.perf.profile=default
 on property:baikal.perf.profile=balance
     setprop "baikal.eng.perf.profile" "balance"
 
+on property:baikal.perf.profile=balance2
+    setprop "baikal.eng.perf.profile" "balance2"    
+
 on property:baikal.perf.profile=video
     setprop "baikal.eng.perf.profile" "video"
 
