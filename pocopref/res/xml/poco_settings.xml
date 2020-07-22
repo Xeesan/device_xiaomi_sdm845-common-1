@@ -11,6 +11,17 @@
 
     </PreferenceCategory>
  
+   <PreferenceCategory
+            android:title="@string/app_name">
+
+        <PreferenceScreen
+                android:key="perf_mode"
+                android:fragment="com.lineageos.settings.pocopref.PerformanceModeActivity"
+                android:summary="@string/help_resource"
+                android:title="@string/app_name" />
+
+    </PreferenceCategory>
+    
       <PreferenceCategory
         android:key="default_profiles"
         android:title="@string/default_profiles_title">

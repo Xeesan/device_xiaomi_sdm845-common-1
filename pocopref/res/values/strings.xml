@@ -87,6 +87,11 @@
      <string name="touch_title">TouchScreen</string>
     <string name="nvt_fw_title">Touch Firmware</string>
     <string name="nvt_fw_summary">Use 9.1.24 version of Novatek firmware for touch panel(Only for users who have NVT Touch screen)</string>
-            
+ 
+    <string name="app_name">APEX Mode</string>
+    <string name="turn_on_now">Turn on now</string>
+    <string name="turn_off_now">Turn off now</string>
+    <string name="help_resource">It will boost performance there by reducing, jank and jitter in most scenarios but there will be a bit higher power consumptions as well</string>
+           
 
 </resources>
