@@ -5,6 +5,7 @@
     <string-array name="performance_listentries">
     	<item>@string/performance_default</item>
     	<item>@string/performance_balance</item>
+    	<item>@string/performance_balance2</item>       
     	<item>@string/performance_performance</item>
     	<item>@string/performance_gaming</item>
     	<item>@string/performance_battery</item>
@@ -12,6 +13,7 @@
      <string-array name="performance_listvalues">
     	<item>default</item>
     	<item>balance</item>
+    	<item>balance2</item>     
     	<item>performance</item>
     	<item>gaming</item>
     	<item>battery</item>
@@ -23,7 +25,6 @@
     	<item>@string/thermal_gaming</item>
     	<item>@string/thermal_gaming2</item>
     	<item>@string/thermal_nolimits</item>
-    	<item>@string/thermal_high</item>
     	<item>@string/thermal_cool</item>
     	<item>@string/thermal_camera</item>
     	<item>@string/thermal_incall</item>
@@ -34,7 +35,6 @@
     	<item>balance</item>
     	<item>gaming</item>
     	<item>gaming2</item>
-    	<item>nolimits</item>
     	<item>high</item>
     	<item>cool</item>
     	<item>camera</item>
