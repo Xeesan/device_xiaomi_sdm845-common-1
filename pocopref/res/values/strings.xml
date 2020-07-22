@@ -83,6 +83,10 @@
     <string name="thermal_engine_title">Thermal Engine</string>
     <string name="thermal_engine_profile_title">Select Thermal Engine Version</string>
     <string name="thermal_engine_summary">Facing Touch latency issues or FPS drops during gaming ?try out different thermal engine verions which fixes ur issue, REBOOT REQUIRED</string>
-             
+
+     <string name="touch_title">TouchScreen</string>
+    <string name="nvt_fw_title">Touch Firmware</string>
+    <string name="nvt_fw_summary">Use 9.1.24 version of Novatek firmware for touch panel(Only for users who have NVT Touch screen)</string>
+            
 
 </resources>

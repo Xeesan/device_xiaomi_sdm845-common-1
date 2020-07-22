@@ -72,7 +72,13 @@ on property:persist.thermal.engine=oneplus
        
 on property:persist.thermal.engine=vivo
        mount none /system/bin/thermal/vivo/thermal-engine /vendor/bin/thermal-engine bind
+       
+on property:persist.baikalos.nvt_fw=1
+    write /sys/module/nt36xxx/parameters/fw_variant 1
 
+on property:persist.baikalos.nvt_fw=0
+    write /sys/module/nt36xxx/parameters/fw_variant 0
+    
 
 
 

@@ -112,6 +112,16 @@
     </PreferenceCategory> 
 
       <PreferenceCategory
+        android:title="@string/touch_title">
+
+    	<SwitchPreference
+    	    android:key="persist.baikalos.nvt_fw"
+    	    android:title="@string/nvt_fw_title"
+    	    android:summary="@string/nvt_fw_summary"
+    	    android:persistent="false" />
+      </PreferenceCategory>               
+
+      <PreferenceCategory
         android:key="thermal_engine"
         android:title="@string/thermal_engine_title">
 

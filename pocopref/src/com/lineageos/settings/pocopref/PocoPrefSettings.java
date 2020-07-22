@@ -25,6 +25,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.lineageos.settings.pocopref.utils.FileUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -42,10 +43,9 @@ import com.lineageos.settings.pocopref.R;
 public class PocoPrefSettings extends PreferenceActivity implements OnPreferenceChangeListener {
 	private static final boolean DEBUG = false;
 	private static final String TAG = "PocoPref";
-//	private static final String THERMAL_KEY = "thermal";
-//	private static final String THERMAL_SYSTEM_PROPERTY = "thermal.profile";
-  private static final String BOOST_SYSTEM_PROPERTY = "interaction.boost";
-//    private ListPreference mTHERMAL;
+    private static final String BOOST_SYSTEM_PROPERTY = "interaction.boost";
+    private static final String SYSTEM_PROPERTY_NVT_FW = "persist.baikalos.nvt_fw";    
+	
     private Preference mAppprofile;
     private SwitchPreference mEnableBOOST;
     private Preference mPowerSave;
@@ -57,6 +57,7 @@ public class PocoPrefSettings extends PreferenceActivity implements OnPreference
     private ListPreference mDefaultThermProfile;
     private ListPreference mScrOffPerfProfile;
     private ListPreference mIdlePerfProfile;
+    private SwitchPreference mNvtFw;	
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,13 +99,6 @@ public class PocoPrefSettings extends PreferenceActivity implements OnPreference
             mEnableBOOST.setChecked(SystemProperties.getBoolean(BOOST_SYSTEM_PROPERTY, false));
             mEnableBOOST.setOnPreferenceChangeListener(this);
         }
-
-//        mTHERMAL = (ListPreference) findPreference(THERMAL_KEY);
-//        if( mTHERMAL != null ) {
- //           mTHERMAL.setValue(SystemProperties.get(THERMAL_SYSTEM_PROPERTY, "0"));
- //           mTHERMAL.setOnPreferenceChangeListener(this);
- //       }
-
 
             mDefaultPerfProfile = (ListPreference) findPreference("default_perf_profile");
             if( mDefaultPerfProfile != null ) {
@@ -196,13 +190,15 @@ public class PocoPrefSettings extends PreferenceActivity implements OnPreference
                       }
                     });
                 }
+                
+        mNvtFw = (SwitchPreference) findPreference(SYSTEM_PROPERTY_NVT_FW);
+        if( mNvtFw != null ) {
+
+                mNvtFw.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_NVT_FW, false));
+                mNvtFw.setOnPreferenceChangeListener(this);
+            }
 
 }
-
-    // Set SPECTRUM
-//    private void setTHERMAL(String value) {
-//		SystemProperties.set(THERMAL_SYSTEM_PROPERTY, value);
-//    }
 
     private void setEnable(String key, boolean value) {
 	if(value) {
