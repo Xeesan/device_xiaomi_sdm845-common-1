@@ -8,14 +8,25 @@ allow vendor_init sysfs_scsi_host:file create;
 allow vendor_init sysfs_ssr_toggle:file w_file_perms;
 set_prop(vendor_init, vendor_displayfeature_prop)
 allow vendor_init vendor_displayfeature_prop:file { getattr open read };
-
+set_prop(vendor_init, vendor_imsadb_prop)
+set_prop(vendor_init, vendor_radio_prop)
+set_prop(vendor_init, vendor_charge_prop)
+set_prop(vendor_init, vendor_imslogs_prop)
+set_prop(vendor_init, vendor_imsqxdm_prop)
+set_prop(vendor_init, vendor_soundtrigger_prop)
+set_prop(vendor_init, vendor_soundtriggerlp_prop)
+set_prop(vendor_init, vendor_fde_prop)
+set_prop(vendor_init, vendor_fm_prop)
+set_prop(vendor_init, cpuperf_prop)
+set_prop(vendor_init, cputhermal_prop)
+get_prop(vendor_init, cpuperf_prop)
+get_prop(vendor_init, cputhermal_prop)
 
 userdebug_or_eng(`
 allow vendor_init persist_debug_prop:file read;
 allow vendor_init tombstone_data_file:dir { getattr ioctl open read };
 ')
-set_prop(vendor_init, cpuperf_prop)
-set_prop(vendor_init, cputhermal_prop)
+
 get_prop(vendor_init, thermal_prop)
 get_prop(vendor_init, perf_prop)
 get_prop(vendor_init, defaultthermal_prop)
@@ -23,3 +34,4 @@ get_prop(vendor_init, defaultperf_prop)
 get_prop(vendor_init, nvt_prop)
 get_prop(vendor_init, esd_prop)
 get_prop(vendor_init, dolby_prop)
+get_prop(vendor_init, perfservice_prop)

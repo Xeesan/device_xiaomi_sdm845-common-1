@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<string-array name="trim_enable_memory_list">
+		<item>600MB</item>
+		<item>800MB</item>
+		<item>1GB</item>
+		<item>1.5GB</item>
+    <item>2GB</item>
+    <item>2.5GB</item>		
+  </string-array>
+	<string-array name="trim_enable_memory_listentries">
+		<item>644245094</item>
+		<item>858993459</item>
+		<item>1073741824</item>
+		<item>1610612736</item>
+    <item>2147483648</item>
+    <item>2684354560</item>		
+  </string-array>
+	<string-array name="bservice_age_listentries">
+		<item>500</item>
+		<item>1000</item>
+		<item>2000</item>
+		<item>3000</item>
+    <item>4000</item>
+    <item>5000</item>		
+  </string-array>  
 	<string-array name="thermal_profiles">
 		<item>Default</item>
 		<item>Game</item>
@@ -13,9 +37,9 @@
 		<item>1</item>
 		<item>2</item>
 		<item>3</item>
-        <item>4</item>
-        <item>5</item>		
-        </string-array>
+    <item>4</item>
+    <item>5</item>		
+  </string-array>
     <!-- kcal -->
     <array name="preset_enteries">
         <item>@string/preset_default</item>
@@ -72,5 +96,5 @@
         <item>240 245 255 125 127 127 0</item>
         <item>245 245 256 125 127 127 0</item>
         <item>245 240 256 125 127 127 0</item>
-    </array>		
+    </array>    
 </resources>

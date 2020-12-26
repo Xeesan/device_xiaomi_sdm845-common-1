@@ -44,15 +44,42 @@ persist.sys.thermal.       u:object_r:thermal_engine_prop:s0
 persist.vendor.dolby.loglevel                 u:object_r:vendor_dolby_loglevel_prop:s0
 
 # Poco Pref
-persist.thermal.profile                       u:object_r:thermal_prop:s0
-persist.performance.profile                   u:object_r:perf_prop:s0
-persist.therm.default                          u:object_r:defaultthermal_prop:s0
-persist.perf.default                           u:object_r:defaultperf_prop:s0
+baikal.therm.profile                       u:object_r:thermal_prop:s0
+baikal.eng.therm.profile                       u:object_r:cputhermal_prop:s0
+baikal.eng.perf.profile                  u:object_r:cpuperf_prop:s0
+baikal.perf.profile                  u:object_r:perf_prop:s0
+baikal.eng.perf.scr_off                  u:object_r:perf_prop:s0
+persist.baikal.perf.scr_off                  u:object_r:perf_prop:s0
+persist.baikal.perf.idle                  u:object_r:perf_prop:s0
+persist.baikal.therm.default                         u:object_r:defaultthermal_prop:s0
+persist.baikal.perf.default                           u:object_r:defaultperf_prop:s0
 persist.nvt_fw                           u:object_r:nvt_prop:s0
 persist.nvt_esd                           u:object_r:esd_prop:s0
 persist.dolby.enable                           u:object_r:dolby_prop:s0
 persist.cpu.thermal.profile                    u:object_r:cputhermal_prop:s0
 persist.cpu.performance.profile                    u:object_r:cpuperf_prop:s0
+restart.perf.service                           u:object_r:perfservice_prop:s0
+
+#netmgrd
+persist.vendor.data.qmipriod_load               u:object_r:vendor_radio_prop:s0
+
+#misc
+persist.vendor.ims.disableADBLogs               u:object_r:vendor_imsadb_prop:s0
+ro.charger.enable_suspend               u:object_r:vendor_radio_prop:s0
+persist.vendor.ims.disableDebugLogs               u:object_r:vendor_charge_prop:s0
+persist.vendor.ims.disableIMSLogs               u:object_r:vendor_imslogs_prop:s0
+persist.vendor.ims.disableQXDMLogs               u:object_r:vendor_imsqxdm_prop:s0
+ro.audio.soundtrigger               u:object_r:vendor_soundtrigger_prop:s0
+ro.audio.soundtrigger.lowpower               u:object_r:vendor_soundtriggerlp_prop:s0
+persist.ppd.fde.config               u:object_r:vendor_fde_prop:s0
+vendor.hw.fm.init               u:object_r:vendor_fm_prop:s0
+
+
+# Aux camera whitelist prop readable to everything
+#vendor.camera.aux.packagelist          u:object_r:exported_default_prop:s0
+
+# Aux camera blacklist prop readable to everything
+#vendor.camera.aux.packageblacklist     u:object_r:exported_default_prop:s0
 
 #displayfeature
 ro.eyecare.brightness.threshold          u:object_r:vendor_displayfeature_prop:s0
@@ -69,12 +96,18 @@ ro.vendor.df.effect.conflict             u:object_r:vendor_displayfeature_prop:s
 persist.vendor.df.extcolor.proc          u:object_r:vendor_displayfeature_prop:s0
 init.svc.displayfeature-hal-1-0          u:object_r:vendor_displayfeature_prop:s0
 ro.resolution_switch.enabled             u:object_r:vendor_displayfeature_prop:s0
+displayfeature.set             u:object_r:vendor_displayfeature_prop:s0
 
 #displayfeature use poll to monitor backlight brightness
 ro.xiaomi.bl.poll                      u:object_r:vendor_displayfeature_prop:s0
 
 #displayfeature hbm enable
 sys.displayfeature.hbm.enable            u:object_r:vendor_displayfeature_prop:s0
+
+
+
+vendor.wlan.driver.version       u:object_r:vendor_wifi_version:s0
+vendor.wlan.firmware.version     u:object_r:vendor_wifi_version:s0
 
 # Boost framework
 persist.vendor.perf.bgt.enable             u:object_r:vendor_boostframework_prop:s0
@@ -94,5 +127,3 @@ persist.vendor.perf.gestureflingboost.enable             u:object_r:vendor_boost
 persist.vendor.perf.launch.boost             u:object_r:vendor_boostframework_prop:s0
 persist.vendor.perf.animation.boost             u:object_r:vendor_boostframework_prop:s0
 persist.vendor.perf.install.boost             u:object_r:vendor_boostframework_prop:s0
-
-

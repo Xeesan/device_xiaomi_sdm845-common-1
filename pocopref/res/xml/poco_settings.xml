@@ -17,7 +17,8 @@
         android:targetPackage="com.lineageos.settings.pocopref.kcal" />
       </Preference>
   </PreferenceCategory>
-
+ 
+ 
     <PreferenceCategory
         android:title="@string/bframework_settings">
 
@@ -33,73 +34,25 @@
       </Preference>
   </PreferenceCategory> 
 
-  <PreferenceCategory
-        android:title="@string/thermal_title">
-
-  <PreferenceScreen
-        android:key="therm_display"
-        android:fragment="com.lineageos.settings.pocopref.ThermalActivity"
-        android:summary="@string/thermal_summary"
-        android:title="@string/thermal_title" />
-
-   </PreferenceCategory>
-   <PreferenceCategory
-        android:title="@string/performance_title">
-
-   <PreferenceScreen
-        android:key="perf_display"
-        android:fragment="com.lineageos.settings.pocopref.PerformanceActivity"
-        android:summary="@string/performance_summary"
-        android:title="@string/performance_title" />
-
-   </PreferenceCategory>
-
-    
-   <PreferenceCategory
-        android:key="default_profiles"
-        android:title="@string/default_profiles_title">
-
-        <com.lineageos.settings.pocopref.SecureSettingListPreference
-        android:key="default_perf_profile"
-        android:title="@string/app_profile_performance_title"
-        android:entries="@array/default_perf_listentries"
-        android:entryValues="@array/default_perf_listvalues" 
-        android:defaultValue="0"
-        android:summary="%s"/>
-
-        <com.lineageos.settings.pocopref.SecureSettingListPreference
-         android:key="default_therm_profile"
-         android:title="@string/app_profile_thermal_title"
-         android:entries="@array/default_therm_listentries"
-         android:entryValues="@array/default_therm_listvalues"
-         android:defaultValue="0"
-         android:summary="%s" />          
-
-    </PreferenceCategory>
-
     <PreferenceCategory
-        android:title="@string/touch_title">
+        android:title="@string/system_settings">
 
-    	<androidx.preference.SwitchPreference
-         android:key="persist.nvt_fw"
-    	 android:title="@string/nvt_fw_title"
-    	 android:summary="@string/nvt_fw_summary"
-    	 android:persistent="false"
-         android:defaultValue="false"  />
-        	
-        <androidx.preference.SwitchPreference
-         android:key="persist.nvt_esd"
-         android:title="@string/nvt_esd_title"
-         android:summary="@string/nvt_esd_summary"
-         android:persistent="true"
-         android:defaultValue="true"  />             
-             
-    </PreferenceCategory>               
+        <Preference
+        android:key="systemsettings"
+        android:persistent="false"
+        android:title="@string/system_settings_title"
+        android:summary="@string/system_settings_summary">
+        <intent
+        android:action="android.intent.action.MAIN"
+        android:targetClass="com.lineageos.settings.pocopref.SystemSettingsActivity"
+        android:targetPackage="com.lineageos.settings.pocopref" />
+      </Preference>
+  </PreferenceCategory>                  
 
     <PreferenceCategory
         android:key="audio_effects"
-        android:title="@string/audio_effects_title"
-
+        android:title="@string/audio_effects_title">
+        	
         <androidx.preference.SwitchPreference
          android:key="persist.dolby.enable"
          android:title="@string/audio_effects_dolby_title"
@@ -107,5 +60,30 @@
          android:defaultValue="true" />
 
    </PreferenceCategory>
+
+    <PreferenceCategory
+    android:key="selinux"
+    android:title="@string/selinux_category">
+
+    <Preference
+        android:summary="@string/selinux_explanation_summary"
+        android:selectable="false"
+        android:icon="@drawable/ic_warning" />
+
+    <SwitchPreference
+        android:key="selinux_mode"
+        android:title="@string/selinux_mode_title"
+        android:summaryOn="@string/selinux_enforcing_summary"
+        android:summaryOff="@string/selinux_permissive_summary"
+        android:icon="@drawable/ic_linux" />
+
+    <SwitchPreference
+        android:key="selinux_persistence"
+        android:title="@string/selinux_persistence_title"
+        android:summary="@string/selinux_persistence_summary"
+        android:defaultValue="true"
+        android:icon="@drawable/ic_power" />
+
+	</PreferenceCategory>   
 
 </PreferenceScreen>

@@ -1,52 +1,56 @@
 on boot
+    setprop "baikal.eng.therm.profile" "default"
+
+on property:baikal.eng.therm.profile=default
+    setprop "baikal.eng.therm.profile" "balance"
 
 # Balance (default profile)
-on property:persist.thermal.profile=0
+on property:baikal.eng.therm.profile=balance
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine.conf"
     stop thermal-engine
     start thermal-engine
-    setprop "persist.cpu.thermal.profile" "balance"     
+    setprop "persist.cpu.thermal.profile" "balance"    
 
 # High
-on property:persist.thermal.profile=4
+on property:baikal.eng.therm.profile=high
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-evaluation.conf"
     stop thermal-engine
     start thermal-engine
-    setprop "persist.cpu.thermal.profile" "nolimits" 
- 
-    
+    setprop "persist.cpu.thermal.profile" "nolimits"     
+
 # Cool
-on property:persist.thermal.profile=2
+on property:baikal.eng.therm.profile=cool
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-extreme.conf"
     stop thermal-engine
     start thermal-engine
-    setprop "persist.cpu.thermal.profile" "cool" 
+    setprop "persist.cpu.thermal.profile" "cool"     
+
 
 # Gaming
-on property:persist.thermal.profile=5
+on property:baikal.eng.therm.profile=gaming
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-game.conf"
     stop thermal-engine
     start thermal-engine
-    setprop "persist.cpu.thermal.profile" "gaming" 
+    setprop "persist.cpu.thermal.profile" "gaming"     
 
 # Gaming 2  - PUBG HD
-on property:persist.thermal.profile=1
+on property:baikal.eng.therm.profile=gaming2
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-game2.conf"
     stop thermal-engine
     start thermal-engine
     setprop "persist.cpu.thermal.profile" "gaming2"     
-    
+
 # Camera
-on property:persist.thermal.profile=3
+on property:baikal.eng.therm.profile=camera
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-camera.conf"
     stop thermal-engine
     start thermal-engine
-    setprop "persist.cpu.thermal.profile" "camera" 
+    setprop "persist.cpu.thermal.profile" "camera"     
 
 # VR
-on property:persist.thermal.profile=6
+on property:baikal.eng.therm.profile=vr
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-arvr.conf"
     stop thermal-engine
     start thermal-engine
-    setprop "persist.cpu.thermal.profile" "video"       
+    setprop "persist.cpu.thermal.profile" "vr"         
 

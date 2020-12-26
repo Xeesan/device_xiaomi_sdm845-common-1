@@ -30,6 +30,7 @@ import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.qcom.test.rc
 import /vendor/etc/init/hw/init.target.rc
 import /vendor/etc/init/hw/init.qcom.factory.rc
+import /vendor/etc/init/hw/init.profiles.rc
 import /vendor/etc/init/hw/init.performance.rc
 import /vendor/etc/init/hw/init.thermal.rc
 
@@ -74,6 +75,8 @@ on init
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
+    # Freezer setup
+    write /dev/freezer/frozen/freezer.killable 1
 	
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
@@ -531,7 +534,10 @@ on property:sys.boot_completed=1
     chown media audio /sys/kernel/wdsp0/boot
     chown media audio /sys/kernel/wcd_cpe0/fw_name
     #Reinit lmkd to reconfigure lmkd properties
-    setprop lmkd.reinit 1
+    setprop lmkd.reinit 1    
+    setprop displayfeature.set 1
+    start qcom-post-boot
+    start qti-testscripts
 
 on property:persist.vendor.radio.atfwd.start=false
     stop vendor.atfwd
@@ -921,10 +927,6 @@ service wifi-crda /vendor/bin/init.crda.sh
    disabled
    oneshot
 
-on property:sys.boot_completed=1
-    start qcom-post-boot
-    start qti-testscripts
-
 on property:ro.vendor.ril.mbn_copy_completed=1
     write /data/vendor/radio/copy_complete 1
 
@@ -1218,3 +1220,9 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     socket audio_hw_socket seqpacket 0666 system system
     task_profiles ProcessCapacityHigh HighPerformance
     onrestart restart audioserver
+
+
+on property:restart.perf.service=1
+       stop perf-hal-2-2
+       start perf-hal-2-2
+

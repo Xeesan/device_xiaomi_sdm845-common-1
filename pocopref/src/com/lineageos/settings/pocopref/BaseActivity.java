@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The LineageOS Project
+ * Copyright (C) 2017 AICP
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,32 @@
  * limitations under the License.
  */
 
+
 package com.lineageos.settings.pocopref;
 
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
+import android.util.TypedValue;
+import android.preference.PreferenceManager;
+import android.provider.Settings;
+import android.view.ContextThemeWrapper;
+import android.view.View;
 
-public class PerformanceActivity extends PreferenceActivity {
+import androidx.fragment.app.FragmentActivity;
 
-    private static final String TAG_PERFORMANCE = "performance";
+public abstract class BaseActivity extends FragmentActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        getFragmentManager().beginTransaction().replace(android.R.id.content,
-                new PerformanceSettingsFragment(), TAG_PERFORMANCE).commit();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
 }

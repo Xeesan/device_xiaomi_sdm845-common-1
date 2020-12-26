@@ -3,3 +3,18 @@ allow platform_app hal_dms_hwservice:hwservice_manager find;
 allow platform_app hal_dms_default:binder { call transfer };
 allow platform_app sysfs_kgsl:lnk_file read;
 allow platform_app sysfs_graphics:file r_file_perms;
+
+# Face Unlock
+get_prop(platform_app, camera_prop)
+
+
+get_prop(platform_app, cpuperf_prop)
+get_prop(platform_app, cputhermal_prop)
+
+
+# power
+allow platform_app sysfs_battery_supply:file open;
+allow platform_app sysfs_battery_supply:file getattr;
+allow platform_app sysfs_battery_supply:file write; 
+allow platform_app sysfs_battery_supply:dir search;
+allow platform_app sysfs_battery_supply:lnk_file read;

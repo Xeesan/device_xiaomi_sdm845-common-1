@@ -26,8 +26,6 @@ public class Startup extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
-        ThermalUtils.startService(context);
-        PerformanceUtils.startService(context);
         KCalSettings.restore(context);	                
 
     }

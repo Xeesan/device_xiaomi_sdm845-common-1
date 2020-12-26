@@ -65,3 +65,5 @@
 /vendor/bin/hw/vendor\.xiaomi\.hardware\.displayfeature@1\.0-service                                    u:object_r:hal_displayfeature_default_exec:s0
 /(vendor|system/vendor)/bin/displayfeature		u:object_r:displayfeature_exec:s0
 
+# Input nodes
+/sys/devices/platform/soc/a98000\.i2c/i2c-3/3-[0-9a-f]+(/input/input[0-9])?/wake_gesture u:object_r:sysfs_touchpanel:s0

@@ -58,6 +58,7 @@ AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 TARGET_PROVIDES_AUDIO_EXTNS := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
+BOARD_SUPPORTS_SOUND_TRIGGER := true
 
 
 # Bluetooth
@@ -177,3 +178,5 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
 -include vendor/xiaomi/sdm845-common/BoardConfigVendor.mk
+
+BUILD_BROKEN_DUP_RULES := true

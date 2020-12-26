@@ -144,7 +144,12 @@ ro.hist.brightness.threshold=7
 
 #Property for display feature histogram
 ro.displayfeature.histogram.enable=true
+persist.vendor.dpmhalservice.enable=1
+ro.vendor.iocgrp.config=1
 
+ro.vendor.perf.scroll_opt=true
+
+vendor.power.pasr.enabled=true
 # Disable backlight notify to displayfeature
 ro.xiaomi.bl.notify=0
 

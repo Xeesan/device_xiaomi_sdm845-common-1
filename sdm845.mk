@@ -75,9 +75,9 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-service \
-    android.hardware.audio@6.0-impl \
-    android.hardware.audio.effect@6.0-impl \
-    android.hardware.soundtrigger@2.2-impl \
+    android.hardware.audio@6.0-impl:32 \
+    android.hardware.audio.effect@6.0-impl:32 \
+    android.hardware.soundtrigger@2.2-impl:32 \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
@@ -148,6 +148,7 @@ PRODUCT_PACKAGES += \
     init.qcom.factory.rc \
     init.remosaic.rc \
     init.thermal.rc \
+    init.profiles.rc \
     init.recovery.qcom.rc
 
 # Context Hub
@@ -400,7 +401,8 @@ PRODUCT_PACKAGES += \
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service.qti
+    android.hardware.thermal@2.0-service.qti \
+    android.hardware.thermal@2.0
 
 # Trust HAL
 PRODUCT_PACKAGES += \
@@ -416,10 +418,10 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-service
 
 # VR
-PRODUCT_PACKAGES += \
-    android.hardware.vr@1.0-impl \
-    android.hardware.vr@1.0-service \
-    vr.sdm845
+#PRODUCT_PACKAGES += \
+#    android.hardware.vr@1.0-impl \
+#    android.hardware.vr@1.0-service \
+#    vr.sdm845
 
 # WiFi
 PRODUCT_PACKAGES += \
@@ -451,4 +453,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+PRODUCT_PACKAGES += \
+    FaceUnlockService
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.face.moto_unlock_service=true
 
