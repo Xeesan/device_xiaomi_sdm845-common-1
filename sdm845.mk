@@ -75,9 +75,9 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-service \
-    android.hardware.audio@6.0-impl \
-    android.hardware.audio.effect@6.0-impl \
-    android.hardware.soundtrigger@2.2-impl \
+    android.hardware.audio@6.0-impl:32 \
+    android.hardware.audio.effect@6.0-impl:32 \
+    android.hardware.soundtrigger@2.2-impl:32 \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
@@ -139,6 +139,8 @@ PRODUCT_PACKAGES += \
     init.qcom.crashdata.sh \
     init.qcom.sh \
     init.qti.fm.sh \
+    init.swap.sh \
+    init.swap.rc \
     init.qcom.rc \
     init.msm.usb.configfs.rc \
     init.qcom.usb.rc \
@@ -148,8 +150,9 @@ PRODUCT_PACKAGES += \
     init.qcom.factory.rc \
     init.remosaic.rc \
     init.thermal.rc \
+    init.profiles.rc \
     init.recovery.qcom.rc
-
+    
 # Context Hub
 PRODUCT_PACKAGES += \
     android.hardware.contexthub@1.0-impl.generic \
@@ -189,7 +192,6 @@ PRODUCT_PACKAGES += \
     gralloc.sdm845 \
     hwcomposer.sdm845 \
     libtinyxml \
-    libvulkan \
     memtrack.sdm845 \
     libqdutils \
     libqdMetaData \
@@ -208,11 +210,6 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.9.vendor \
     vendor.display.config@2.0.vendor \
     vendor.display.config@2.0
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.has_wide_color_display=true
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.has_HDR_display=true
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=true
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.wcg_composition_dataspace=143261696
 
 
 # DRM
@@ -262,6 +259,10 @@ PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
 
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-service.xiaomi_sdm845
+
 # Media
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -278,7 +279,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
-    $(LOCAL_PATH)/configs/media_codecs_dolby_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_dolby_audio.xml \
     $(LOCAL_PATH)/configs/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml \
     $(LOCAL_PATH)/configs/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     $(LOCAL_PATH)/configs/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml \
@@ -332,10 +332,8 @@ PRODUCT_COPY_FILES += \
 -include vendor/qcom/common/perf/perf-vendor.mk
 -include vendor/qcom/common/wfd/wfd-vendor.mk
 -include vendor/qcom/common/av/av-vendor.mk
--include vendor/qcom/common/telephony/telephony-vendor.mk
 -include vendor/qcom/common/bt/bt-vendor.mk
 -include vendor/qcom/common/audio/audio-vendor.mk
--include vendor/qcom/common/telephony-diag/telephony-diag-vendor.mk
 
 
 # Radio
@@ -395,7 +393,8 @@ PRODUCT_PACKAGES += \
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service.qti
+    android.hardware.thermal@2.0-service.qti \
+    android.hardware.thermal@2.0
 
 # Trust HAL
 PRODUCT_PACKAGES += \
@@ -411,10 +410,10 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-service
 
 # VR
-PRODUCT_PACKAGES += \
-    android.hardware.vr@1.0-impl \
-    android.hardware.vr@1.0-service \
-    vr.sdm845
+#PRODUCT_PACKAGES += \
+#    android.hardware.vr@1.0-impl \
+#    android.hardware.vr@1.0-service \
+#    vr.sdm845
 
 # WiFi
 PRODUCT_PACKAGES += \
@@ -447,3 +446,28 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
+PRODUCT_PACKAGES += \
+    FaceUnlockService
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.face.moto_unlock_service=true
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.has_wide_color_display=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.has_HDR_display=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.wcg_composition_dataspace=143261696
+
+# Inherit GMS, Pixel Features, and Modules.
+#$(call inherit-product, vendor/google/gms/config.mk)
+
+# Don't preoptimize prebuilts when building GMS.
+#DONT_DEXPREOPT_PREBUILTS := true
+
+# Pixel Features
+#$(call inherit-product, vendor/google/pixel/config.mk)
+
+#PRODUCT_PACKAGES += \
+#  DescendantAOD
+
+
+#$(call inherit-product, vendor/themes/descendantclockflow/descendantclockflow.mk)

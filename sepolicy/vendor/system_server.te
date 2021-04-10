@@ -5,9 +5,6 @@ allow system_server vendor_default_prop:file { getattr open read };
 
 binder_call(system_server, glgps)
 
-get_prop(system_server, camera_prop)
-get_prop(system_server, persist_camera_prop)
-
 userdebug_or_eng(`
 allow system_server vendor_wfd_sys_debug_prop:file { getattr open read };
 ')
@@ -22,6 +19,12 @@ set_prop(system_server, esd_prop)
 get_prop(system_server, esd_prop)
 set_prop(system_server, dolby_prop)
 get_prop(system_server, dolby_prop)
+set_prop(system_server, perfservice_prop)
+get_prop(system_server, perfservice_prop)
 set_prop(system_server, vendor_boostframework_prop)
 get_prop(system_server, vendor_boostframework_prop)
+set_prop(system_server, thermal_prop);
+get_prop(system_server, thermal_prop);
+set_prop(system_server, perf_prop);
+get_prop(system_server, perf_prop);
 

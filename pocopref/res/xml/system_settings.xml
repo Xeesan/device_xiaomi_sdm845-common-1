@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2018 The AospExtended Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+      <PreferenceCategory
+        android:key="default_profiles"
+        android:title="@string/default_profiles_title">
+
+        <com.lineageos.settings.pocopref.SecureSettingListPreference
+    	    android:key="default_perf_profile"
+    	    android:title="@string/app_profile_performance_title"
+    	    android:entries="@array/default_performance_listentries"
+    	    android:entryValues="@array/default_performance_listvalues" 
+          android:defaultValue="balance"
+          android:summary="%s"/>
+
+        <com.lineageos.settings.pocopref.SecureSettingListPreference
+            android:key="default_therm_profile"
+            android:title="@string/app_profile_thermal_title"
+            android:entries="@array/default_thermal_listentries"
+            android:entryValues="@array/default_thermal_listvalues"
+            android:defaultValue="balance"
+            android:summary="%s" />
+ 
+         <com.lineageos.settings.pocopref.SecureSettingListPreference
+    	    android:key="default_screen_profile"
+    	    android:title="@string/scr_off_profile_title"
+    	    android:entries="@array/default_performance_listentries"
+    	    android:entryValues="@array/default_performance_listvalues" 
+            android:defaultValue="battery"
+            android:summary="%s"/>
+
+        <com.lineageos.settings.pocopref.SecureSettingListPreference
+    	    android:key="default_idle_profile"
+    	    android:title="@string/idle_profile_title"
+    	    android:entries="@array/default_performance_listentries"
+    	    android:entryValues="@array/default_performance_listvalues" 
+          android:defaultValue="battery"
+          android:summary="%s"/>           
+
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+            android:title="@string/app_settings_category">
+
+        <PreferenceScreen
+                android:key="appprofile"
+                android:fragment="com.lineageos.settings.pocopref.AppProfilesActivity"
+                android:summary="@string/app_settings_summary"
+                android:title="@string/app_settings_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/powersave_title" >
+
+
+    <com.lineageos.settings.pocopref.GlobalSettingSwitchPreference
+        android:key="baikalos_extreme_idle"
+        android:title="@string/baikal_extreme_saver_enabled_enabled_title"
+        android:summary="@string/baikal_extreme_saver_enabled_enabled_summary"
+        android:defaultValue="false"
+        android:disableDependentsState="true" />
+
+    <com.lineageos.settings.pocopref.GlobalSettingSwitchPreference
+            android:key="baikalos_gms_blocked"
+            android:title="@string/powersave_gms_blocked_title"
+            android:summary="@string/powersave_gms_blocked_summary"
+            android:defaultValue="false"
+            android:disableDependentsState="true" />
+                
+    <com.lineageos.settings.pocopref.GlobalSettingSwitchPreference
+        android:key="baikalos_hide_gms"
+        android:title="@string/powersave_hide_idle_title"
+        android:summary="@string/powersave_hide_idle_summary"
+        android:defaultValue="false"
+        android:disableDependentsState="true" />
+
+    <com.lineageos.settings.pocopref.GlobalSettingSwitchPreference
+        android:key="baikalos_unrestricted_net"
+        android:title="@string/powersave_unrestricted_network_title"
+        android:summary="@string/powersave_unrestricted_network_summary"
+        android:defaultValue="false"
+        android:disableDependentsState="true" />
+
+    <com.lineageos.settings.pocopref.GlobalSettingSwitchPreference
+        android:key="baikalos_aggressive_idle"
+        android:title="@string/device_idle_aggressive_title"
+        android:summary="@string/device_idle_aggressive_summary"
+        android:defaultValue="true"
+        android:disableDependentsState="true" />
+    
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
+

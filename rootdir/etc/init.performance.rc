@@ -1,7 +1,11 @@
 on boot
+    setprop "baikal.eng.perf.profile" "default"
+
+on property:baikal.eng.perf.profile=default
+    setprop "baikal.eng.perf.profile" "balance"
 
 # Balance (default profile)
-on property:persist.performance.profile=0
+on property:baikal.eng.perf.profile=balance
 
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
@@ -14,7 +18,7 @@ on property:persist.performance.profile=0
 
 
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 2
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 300
@@ -50,13 +54,22 @@ on property:persist.performance.profile=0
     write /sys/class/devfreq/soc:qcom,l3-cpu4/min_freq 300000000
     write /sys/class/devfreq/soc:qcom,l3-cpu4/max_freq 1478400000
     write /sys/class/devfreq/soc:qcom,l3-cpu4/polling_interval 50
-
-    write /proc/sys/vm/swappiness 1
-    write /proc/sys/vm/vfs_cache_pressure 100
-
+    
+    write /dev/stune/schedtune.boost 0
+    write /dev/stune/top-app/schedtune.boost 10
+    write /dev/stune/rt/schedtune.boost 0
+    write /dev/stune/foreground/schedtune.boost 0
+    write /dev/stune/background/schedtune.boost 0            
+    write /dev/stune/foreground/schedtune.sched_boost_no_override 1
+    write /dev/stune/top-app/schedtune.sched_boost_no_override 1
+    write /dev/stune/schedtune.colocate 0
+    write /dev/stune/background/schedtune.colocate 0
+    write /dev/stune/system-background/schedtune.colocate 0
+    write /dev/stune/foreground/schedtune.colocate 0
+    write /dev/stune/top-app/schedtune.colocate 1    
 
 # Performance (based on DrunkSauce Lite)
-on property:persist.performance.profile=1
+on property:baikal.eng.perf.profile=performance
 
     setprop "persist.cpu.performance.profile" "performance"
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
@@ -106,12 +119,22 @@ on property:persist.performance.profile=1
     write /sys/class/devfreq/soc:qcom,l3-cpu4/max_freq 1478400000
     write /sys/class/devfreq/soc:qcom,l3-cpu4/polling_interval 50
 
-
-    write /proc/sys/vm/swappiness 1
-    write /proc/sys/vm/vfs_cache_pressure 100
+    write /dev/stune/schedtune.boost 15
+    write /dev/stune/top-app/schedtune.boost 15
+    write /dev/stune/rt/schedtune.boost 15
+    write /dev/stune/foreground/schedtune.boost 15
+    write /dev/stune/background/schedtune.boost 15    
+    write /dev/stune/top-app/schedtune.boost 15
+    write /dev/stune/foreground/schedtune.sched_boost_no_override 1
+    write /dev/stune/top-app/schedtune.sched_boost_no_override 1
+    write /dev/stune/schedtune.colocate 1
+    write /dev/stune/background/schedtune.colocate 1
+    write /dev/stune/system-background/schedtune.colocate 1
+    write /dev/stune/foreground/schedtune.colocate 1
+    write /dev/stune/top-app/schedtune.colocate 1    
 
 # Battery
-on property:persist.performance.profile=3
+on property:baikal.eng.perf.profile=battery
 
     setprop "persist.cpu.performance.profile" "battery"
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
@@ -166,11 +189,22 @@ on property:persist.performance.profile=3
     write /sys/class/devfreq/soc:qcom,l3-cpu4/max_freq 844800000
     write /sys/class/devfreq/soc:qcom,l3-cpu4/polling_interval 50
 
-    write /proc/sys/vm/swappiness 60
-    write /proc/sys/vm/vfs_cache_pressure 100
+    write /dev/stune/schedtune.boost 0
+    write /dev/stune/top-app/schedtune.boost 0
+    write /dev/stune/rt/schedtune.boost 0
+    write /dev/stune/foreground/schedtune.boost 0
+    write /dev/stune/background/schedtune.boost 0
+    write /dev/stune/top-app/schedtune.boost 0
+    write /dev/stune/foreground/schedtune.sched_boost_no_override 0
+    write /dev/stune/top-app/schedtune.sched_boost_no_override 0
+    write /dev/stune/schedtune.colocate 0
+    write /dev/stune/background/schedtune.colocate 0
+    write /dev/stune/system-background/schedtune.colocate 0
+    write /dev/stune/foreground/schedtune.colocate 0
+    write /dev/stune/top-app/schedtune.colocate 0
 
 # Gaming
-on property:persist.performance.profile=2
+on property:baikal.eng.perf.profile=gaming
 
     setprop "persist.cpu.performance.profile" "gaming"
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
@@ -219,11 +253,22 @@ on property:persist.performance.profile=2
     write /sys/class/devfreq/soc:qcom,l3-cpu4/max_freq 1478400000
     write /sys/class/devfreq/soc:qcom,l3-cpu4/polling_interval 50
 	
-    write /proc/sys/vm/swappiness 1
-    write /proc/sys/vm/vfs_cache_pressure 100
-    
+    write /dev/stune/schedtune.boost 15
+    write /dev/stune/top-app/schedtune.boost 15
+    write /dev/stune/rt/schedtune.boost 15
+    write /dev/stune/foreground/schedtune.boost 15
+    write /dev/stune/background/schedtune.boost 15
+    write /dev/stune/foreground/schedtune.sched_boost_no_override 1
+    write /dev/stune/top-app/schedtune.sched_boost_no_override 1
+    write /dev/stune/schedtune.colocate 1
+    write /dev/stune/background/schedtune.colocate 1
+    write /dev/stune/system-background/schedtune.colocate 1
+    write /dev/stune/foreground/schedtune.colocate 1
+    write /dev/stune/top-app/schedtune.colocate 1 
+ 
+
 # Balance (default profile)
-on property:persist.performance.profile=4
+on property:baikal.eng.perf.profile=balance2
 
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
@@ -236,7 +281,7 @@ on property:persist.performance.profile=4
 
 
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 300
@@ -249,7 +294,7 @@ on property:persist.performance.profile=4
     write /sys/class/devfreq/soc:qcom,cpubw/max_freq 14236
     write /sys/class/devfreq/soc:qcom,cpubw/polling_interval 50
 
-    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/min_freq 2000
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/min_freq 762
     write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/max_freq 6881
     write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/polling_interval 10
 
@@ -257,11 +302,11 @@ on property:persist.performance.profile=4
     write /sys/class/devfreq/soc:qcom,l3-cdsp/max_freq 1478400000
     write /sys/class/devfreq/soc:qcom,l3-cdsp/polling_interval 50
 
-    write /sys/class/devfreq/soc:qcom,memlat-cpu0/min_freq 2000
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/min_freq 762
     write /sys/class/devfreq/soc:qcom,memlat-cpu0/max_freq 6881
     write /sys/class/devfreq/soc:qcom,memlat-cpu0/polling_interval 50
 
-    write /sys/class/devfreq/soc:qcom,memlat-cpu4/min_freq 2000
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/min_freq 762
     write /sys/class/devfreq/soc:qcom,memlat-cpu4/max_freq 6881
     write /sys/class/devfreq/soc:qcom,memlat-cpu4/polling_interval 50
 
@@ -273,6 +318,16 @@ on property:persist.performance.profile=4
     write /sys/class/devfreq/soc:qcom,l3-cpu4/max_freq 1478400000
     write /sys/class/devfreq/soc:qcom,l3-cpu4/polling_interval 50
 
-    write /proc/sys/vm/swappiness 1
-    write /proc/sys/vm/vfs_cache_pressure 100
+    write /dev/stune/schedtune.boost 0
+    write /dev/stune/top-app/schedtune.boost 10
+    write /dev/stune/rt/schedtune.boost 0
+    write /dev/stune/foreground/schedtune.boost 0
+    write /dev/stune/background/schedtune.boost 0
+    write /dev/stune/foreground/schedtune.sched_boost_no_override 1
+    write /dev/stune/top-app/schedtune.sched_boost_no_override 1
+    write /dev/stune/schedtune.colocate 0
+    write /dev/stune/background/schedtune.colocate 0
+    write /dev/stune/system-background/schedtune.colocate 0
+    write /dev/stune/foreground/schedtune.colocate 0
+    write /dev/stune/top-app/schedtune.colocate 1 
 

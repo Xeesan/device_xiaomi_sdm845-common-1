@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (C) 2017 AICP
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/app_profile_title">
+        <ListPreference
+            android:key="app_profile_performance"
+            android:title="@string/app_profile_performance_title"
+            android:entries="@array/performance_listentries"
+            android:entryValues="@array/performance_listvalues" 
+            android:defaultValue="default"
+            android:summary="%s"/>
+
+        <ListPreference
+            android:key="app_profile_thermal"
+            android:title="@string/app_profile_thermal_title"
+            android:entries="@array/thermal_listentries"
+            android:entryValues="@array/thermal_listvalues"
+            android:defaultValue="default"
+            android:summary="%s" />
+
+        <ListPreference
+            android:key="app_profile_brightness"
+            android:title="@string/app_profile_brightness_title"
+            android:entries="@array/brightness_listentries"
+            android:entryValues="@array/brightness_listvalues"
+            android:defaultValue="default"
+            android:summary="%s"/>
+
+        <!-- ListPreference
+            android:key="app_profile_fps"
+            android:title="@string/app_profile_fps_title"
+            android:entries="@array/fps_listentries"
+            android:entryValues="@array/fps_listvalues"
+            android:defaultValue="default"
+            android:summary="%s" / -->
+
+        <SwitchPreference
+            android:key="app_profile_reader"
+            android:title="@string/app_profile_reader_title"
+            android:summary="@string/app_profile_reader_summary"
+            android:persistent="false" />
+
+        <SwitchPreference
+            android:key="app_profile_pinned"
+            android:title="@string/app_profile_pinned_title"
+            android:summary="@string/app_profile_pinned_summary"
+            android:defaultValue="false" />
+
+        <ListPreference
+            android:key="app_profile_background"
+            android:title="@string/app_profile_background_title"
+            android:entries="@array/background_restrictions_entries"
+            android:entryValues="@array/background_restrictions_values" 
+            android:defaultValue="default"
+            android:summary="%s"/>            
+
+        <SwitchPreference
+            android:key="app_profile_require_gms"
+            android:title="@string/app_profile_require_gms_title"
+            android:summary="@string/app_profile_require_gms_summary"
+            android:defaultValue="false" />
+            
+        <SwitchPreference
+            android:key="app_profile_stamina"
+            android:title="@string/app_profile_stamina_title"
+            android:summary="@string/app_profile_stamina_summary"
+            android:defaultValue="false" />
+
+        <SwitchPreference
+            android:key="app_profile_restricted"
+            android:title="@string/app_profile_restricted_title"
+            android:summary="@string/app_profile_restricted_summary"
+            android:defaultValue="false" />
+            
+        <!-- SwitchPreference
+            android:key="app_profile_disable_twl"
+            android:title="@string/app_profile_disable_twl_title"
+            android:summary="@string/app_profile_disable_twl_summary"
+            android:defaultValue="false" / -->
+
+        <!-- SwitchPreference
+            android:key="app_profile_camera_hal1"
+            android:title="@string/app_profile_camera_hal1_title"
+            android:summary="@string/app_profile_camera_hal1_summary"
+            android:defaultValue="false" / -->
+
+        <SwitchPreference
+            android:key="app_profile_restricted_idle"
+            android:title="@string/app_profile_restricted_idle_title"
+            android:summary="@string/app_profile_restricted_idle_summary"
+            android:defaultValue="false" />
+
+</PreferenceScreen>

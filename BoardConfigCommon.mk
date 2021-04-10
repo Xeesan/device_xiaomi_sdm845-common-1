@@ -58,6 +58,7 @@ AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 TARGET_PROVIDES_AUDIO_EXTNS := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
+BOARD_SUPPORTS_SOUND_TRIGGER := true
 
 
 # Bluetooth
@@ -126,6 +127,7 @@ TARGET_COPY_OUT_VENDOR := vendor
 
 # Power
 TARGET_POWERHAL_MODE_EXT := $(COMMON_PATH)/power/power-mode.cpp
+TARGET_USES_INTERACTION_BOOST := true
 
 # Properties
 TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
@@ -177,3 +179,9 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
 -include vendor/xiaomi/sdm845-common/BoardConfigVendor.mk
+
+BUILD_BROKEN_DUP_RULES := true
+PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/data-ipa-cfg-mgr
+
+USE_PIXEL_CHARGER_IMAGES := true
+

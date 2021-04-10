@@ -13,37 +13,14 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string name="pocopref_title">POCO Extras</string>
+    <string name="pocopref_title">MI Extras</string>
 
-     <!-- thermal Profiles -->
-    <string name="thermal_title">Thermal Profiles</string>
-    <string name="thermal_summary">Choose your per-app thermal profile</string>
+    <string name="app_settings_category">Applications Settings</string>
+    <string name="app_settings_title">Per-App Profiles</string>
+    <string name="app_settings_summary">Choose per-app settings for Battery, Performance, Thermal, brightnes etc...</string>
 
-     <!-- Perf Profiles -->
-    <string name="performance_title">Performance Profiles</string>
-    <string name="performance_summary">Choose your per-app performance profile</string>
-	
-     <!-- Per app Profile Strings -->
-    <string name="default_profiles_title">Default profiles</string>
-    <string name="app_profile_performance_title">Performance profile</string>  
-    <string name="app_profile_thermal_title">Thermal profile</string>  
-    <string name="performance_default">Default</string>
-    <string name="performance_balance">Balanced</string>
-    <string name="performance_balanced2">Balanced-V2</string>  
-    <string name="performance_battery">Battery</string>
-    <string name="performance_performance">Performance</string>
-    <string name="performance_gaming">Gaming</string>
-    <string name="performance_benchmark">Performance</string>
-	
-    <!-- Thermal profiles -->
-    <string name="thermal_default">Default</string>
-    <string name="thermal_balance">Balance</string> 
-    <string name="thermal_benchmark">Gaming 2</string>
-    <string name="thermal_browser">Cool</string>
-    <string name="thermal_camera">Camera</string>
-    <string name="thermal_dialer">No Limits</string>
-    <string name="thermal_gaming">Gaming</string>
-    <string name="thermal_youtube">Video</string> 
+    <string name="scr_off_profile_title">Screen off profile</string>
+    <string name="idle_profile_title">Idle profile</string>
 
     <!-- Category title -->
     <string name="display_title">Display</string>
@@ -113,7 +90,7 @@
     <!-- Label for feature switch -->
     <string name="switch_bar_off">Off</string>
 
-    <!--   Display Modes   -->
+     <!--Display Modes-->
     <string name="xiaomi_display_profile_title">Color Profile</string>
 
     <string name="xiaomi_display_adapt_1">Adapt (Warm)</string>
@@ -122,7 +99,7 @@
     <string name="xiaomi_display_enhance">Enhance</string>
     <string name="xiaomi_display_standard">Standard</string>
 
-    <!--   Touch options  -->
+    <!--    # Touch options -->
     <string name="touch_title">TouchScreen</string>
     <string name="nvt_fw_title">Touch Firmware</string>
     <string name="nvt_fw_summary">Use 9.1.24 version of Novatek firmware for touch panel(Only for users who have NVT Touch screen)</string>
@@ -130,7 +107,7 @@
     <string name="nvt_esd_title">ESD protection</string>
     <string name="nvt_esd_summary">Enable ESD protection feature</string>
 
-    <!--   Dolby  -->
+      <!--    # Dolby-->
     <string name="audio_effects_title">Effects</string>
     <string name="audio_effects_dolby_title">Enable Dolby</string>
     <string name="audio_effects_dolby_summary">Enable systemwide Dolby effect (Requires Reboot )</string>
@@ -167,4 +144,20 @@
     <string name="bservice_limit">Background Services Limit</string>
     <string name="bservice_age">Background Age Limit(milliseconds)</string>
 
+     <!--  Boost Framework-->
+    <string name="system_settings">System Tweaks</string>
+    <string name="system_settings_title">System Tweaks</string>
+    <string name="system_settings_summary">Set system wide profiles and per-app profiles for thermal, perf, brightness and Power Saving tweaks</string>	
+
+    <!-- Selinux Switch -->
+    <string name="selinux_category">SELinux</string>
+    <string name="selinux_explanation_summary">SELinux is a set of kernel modifications and user-space tools. Changing modes can cause unwanted effects. Use at your own risk.(ROOT REQUIRED)</string>
+    <string name="selinux_mode_title">SELinux mode</string>
+    <string name="selinux_permissive_summary">Permissive</string>
+    <string name="selinux_enforcing_summary">Enforcing</string>
+    <string name="selinux_persistence_title">Persist across reboots</string>
+    <string name="selinux_persistence_summary">Restore the above set sepolicy mode on each boot</string>
+    <string name="selinux_permissive_toast_title">Selinux set to permissive!</string>
+    <string name="selinux_enforcing_toast_title">Selinux set to enforcing!</string>
+    <string name="cannot_get_su">Action failed because of missing superuser access</string>    
     </resources>

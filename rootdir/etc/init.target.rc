@@ -58,6 +58,12 @@ on init
     chmod 0660 /dev/mi-camera-hal2vendor
     chown system system /sys/class/touch/tp_dev/fod_status
 
+    # ZRAM parameters
+    write /sys/block/zram0/comp_algorithm lz4
+    write /sys/block/zram0/disksize 3221225472
+    write /sys/block/zram0/max_comp_streams 8
+    write /proc/sys/vm/page-cluster 0
+
 # Add a cpuset for the camera daemon
 # We want all cores for camera
     mkdir /dev/cpuset/camera-daemon

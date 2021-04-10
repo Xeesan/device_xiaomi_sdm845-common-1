@@ -1,2 +1,8 @@
 # disable logspam
 dontaudit ims diag_device:chr_file { read write };
+
+allow ims vendor_imsadb_prop:file { getattr open read };
+allow ims vendor_radio_prop:file { getattr open read };
+allow ims vendor_charge_prop:file { getattr open read };
+allow ims vendor_imslogs_prop:file { getattr open read };
+allow ims vendor_imsqxdm_prop:file { getattr open read };

@@ -5,6 +5,7 @@ type thermal_engine_prop, property_type;
 type vendor_dpps_prop, property_type;
 
 type vendor_fp_prop, property_type;
+type vendor_imsadb_prop, property_type;
 type vendor_displayfeature_prop, property_type;
 
 # Dolby
@@ -12,6 +13,16 @@ type vendor_dolby_loglevel_prop, property_type;
 
 type cputhermal_prop, property_type;
 type cpuperf_prop, property_type;
+type vendor_charge_prop, property_type;
+type vendor_imslogs_prop, property_type;
+type vendor_imsqxdm_prop, property_type;
+type vendor_soundtrigger_prop, property_type;
+type vendor_soundtriggerlp_prop, property_type;
+type vendor_fde_prop, property_type;
+type vendor_fm_prop, property_type;
+
+# Wifi version recorder
+vendor_internal_prop(vendor_wifi_version);
 
 compatible_property_only(`
     system_restricted_prop(thermal_prop)
@@ -21,6 +32,7 @@ compatible_property_only(`
     system_restricted_prop(nvt_prop)
     system_restricted_prop(esd_prop)
     system_restricted_prop(dolby_prop)
+    system_restricted_prop(perfservice_prop)
     system_restricted_prop(vendor_boostframework_prop)	
 ')
 
@@ -32,6 +44,7 @@ not_compatible_property(`
     system_public_prop(nvt_prop)
     system_public_prop(esd_prop)
     system_public_prop(dolby_prop)
+    system_public_prop(perfservice_prop)
     system_public_prop(vendor_boostframework_prop)	
 ')
 
