@@ -1,7 +1,4 @@
-Common_CFlags = ["-Wall"]
-Common_CFlags += ["-Werror"]
-
-cc_library_shared {
+Common_CFlags = ["-Wall"] Common_CFlags += ["-Werror"] cc_library_shared {
     name: "vendor.qti.hardware.vibrator.impl.xiaomi_sdm845",
     stem: "vendor.qti.hardware.vibrator.impl",
     vendor: true,
@@ -15,11 +12,10 @@ cc_library_shared {
         "liblog",
         "libqtivibratoreffect",
         "libbinder_ndk",
-        "android.hardware.vibrator-ndk_platform",
+        "android.hardware.vibrator-V1-ndk_platform",
     ],
     export_include_dirs: ["include"]
 }
-
 cc_binary {
     name: "vendor.qti.hardware.vibrator.service.xiaomi_sdm845",
     stem: "vendor.qti.hardware.vibrator.service",
@@ -38,7 +34,7 @@ cc_binary {
         "libutils",
         "libbase",
         "libbinder_ndk",
-        "android.hardware.vibrator-ndk_platform",
+        "android.hardware.vibrator-V1-ndk_platform",
         "vendor.qti.hardware.vibrator.impl",
     ],
 }
